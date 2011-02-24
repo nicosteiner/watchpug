@@ -1,0 +1,94 @@
+<!ENTITY  options.title                                                               "HttpFoxオプション">
+<!ENTITY  options.startAtBrowserStart.checkbox                                        "ブラウザ起動時にモニタを開始する">
+<!ENTITY  options.alwaysOpenDetached.checkbox                                         "常に別ウィンドウで開く">
+<!ENTITY  options.colorRequests.checkbox                                              "ステータスにより色を変える">
+<!ENTITY  options.forceCaching.checkbox                                               "request.channelからINHIBIT_CACHINGフラグを除去（キャッシュをモニタするため）">
+
+<!ENTITY  overlay.requestlist.menu.menupop.toggle.label                               "開始/停止">
+<!ENTITY  overlay.requestlist.menu.menupop.detach.label                               "別ウィンドウで開く">
+<!ENTITY  overlay.requestlist.menu.menupop.options.label                              "オプション">
+
+<!ENTITY  overlay.requestlist.toolbox.toolbar.start.button                            "開始">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.start.tooltip                           "モニタを開始する">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.stop.button                             "停止">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.stop.tooltip                            "モニタを停止する">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.clear.button                            "クリア">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.clear.tooltip                           "クリアする">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.filter.tooltip                          "URLの抽出条件">    
+<!ENTITY  overlay.requestlist.toolbox.toolbar.autoscroll.checkbox                     "自動スクロール">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.detach.tooltip                          "別ウィンドウで開く">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.close.tooltip                           "閉じる">
+
+<!ENTITY  overlay.requestlist.popup.copyTreeRowCell.label                             "セルをコピー">
+<!ENTITY  overlay.requestlist.popup.copyTreeRow.label                                 "行をコピー">
+<!ENTITY  overlay.requestlist.popup.copyTreeAllRows.label                             "全ての行をコピー">
+
+<!ENTITY  overlay.requestlist.tree.col.start.label                                    "時間">
+<!ENTITY  overlay.requestlist.tree.col.time.label                                     "経過">
+<!ENTITY  overlay.requestlist.tree.col.sent.label                                     "送信">
+<!ENTITY  overlay.requestlist.tree.col.received.label                                 "受信">
+<!ENTITY  overlay.requestlist.tree.col.method.label                                   "メソッド">
+<!ENTITY  overlay.requestlist.tree.col.result.label                                   "ステータス">
+<!ENTITY  overlay.requestlist.tree.col.type.label                                     "タイプ">
+<!ENTITY  overlay.requestlist.tree.col.url.label                                      "URL">
+
+<!ENTITY  overlay.requestdetails.popup.copyTreeRowCell.label                          "セルをコピー">
+<!ENTITY  overlay.requestdetails.popup.copyTreeRow.label                              "行をコピー">
+<!ENTITY  overlay.requestdetails.popup.copyTreeAllRows.label                          "全ての行をコピー">
+
+<!ENTITY  overlay.requestdetails.tablist.headers.label                                "ヘッダ">
+<!ENTITY  overlay.requestdetails.tablist.cookies.label                                "Cookie">
+<!ENTITY  overlay.requestdetails.tablist.querystring.label                            "クエリ文字列">
+<!ENTITY  overlay.requestdetails.tablist.post.label                                   "POSTデータ">
+<!ENTITY  overlay.requestdetails.tablist.content.label                                "ボディ">
+<!ENTITY  overlay.requestdetails.tablist.debug.label                                  "Debug用">
+
+<!ENTITY  overlay.requestdetails.headerstab.requestheadertree.col.reqheader.label     "リクエストヘッダ">
+<!ENTITY  overlay.requestdetails.headerstab.requestheadertree.col.value.label         "値">
+
+<!ENTITY  overlay.requestdetails.headerstab.responseheadertree.col.respheader.label   "レスポンスヘッダ">
+<!ENTITY  overlay.requestdetails.headerstab.responseheadertree.col.value.label        "値">
+
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.cookiesent.label      "送信Cookie">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.value.label           "値">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.path.label            "パス">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.domain.label          "ドメイン">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.expires.label         "有効期限">
+
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.cookierec.label        "受信Cookie">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.value.label            "値">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.path.label             "パス">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.domain.label           "ドメイン">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.expires.label          "有効期限">
+
+<!ENTITY  overlay.requestdetails.querystab.querystringtree.col.param.label            "パラメータ">
+<!ENTITY  overlay.requestdetails.querystab.querystringtree.col.value.label            "値">
+
+<!ENTITY  overlay.requestdetails.posttab.prettybox.datatree.col.param.label           "パラメータ">
+<!ENTITY  overlay.requestdetails.posttab.prettybox.datatree.col.value.label           "値">
+<!ENTITY  overlay.requestdetails.posttab.pretty.radio                                 "パラメータ別">
+<!ENTITY  overlay.requestdetails.posttab.raw.radio                                    "未加工">
+
+<!ENTITY  overlay.requestdetails.contenttab.type.label                                "タイプ：">
+<!ENTITY  overlay.requestdetails.contenttab.pretty.radio                              "パラメータ別">
+<!ENTITY  overlay.requestdetails.contenttab.raw.radio                                 "未加工">
+
+<!ENTITY  browseroverlay.statusbar.menu.detach.label                                  "別ウィンドウで開く">
+<!ENTITY  browseroverlay.statusbar.menu.options.label                                 "オプション">
+
+<!ENTITY  browseroverlay.menuview.httpfox.label                                       "HttpFox">
+<!ENTITY  browseroverlay.menutools.httpfox.label                                      "HttpFox">
+
+<!ENTITY  window.title                                                                "HttpFox">
+
+
+
+
+
+
+
+
+
+
+
+

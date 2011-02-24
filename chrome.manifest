@@ -1,0 +1,9 @@
+content amivalid chrome/content/
+
+overlay chrome://browser/content/browser.xul chrome://amivalid/content/browserOverlay.xul
+overlay chrome://navigator/content/navigatorOverlay.xul chrome://amivalid/content/browserOverlay.xul
+
+locale	amivalid	en-US	locale/en-US/
+locale	amivalid	en-GB	locale/en-US/
+locale	amivalid	de-DE	locale/de-DE/
+

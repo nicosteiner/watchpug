@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://HttpFox/skin/HttpFox.css"
+                 type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://httpfox/locale/HttpFox.dtd">  
+<?xul-overlay href="chrome://httpfox/content/HttpFoxOverlay.xul"?>
+
+<overlay id="httpfox" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<!-- scripts start -->
+	<script type="application/x-javascript" src="chrome://httpfox/content/HttpFox.js"/>
+	<script type="application/x-javascript" src="chrome://httpfox/content/HttpFoxTree.js"/>
+	<script type="application/x-javascript" src="chrome://httpfox/content/Utils.js"/>
+	<!-- scripts end -->
+	
+	<statusbar id="status-bar"> <!-- overlay firefox statusbar -->
+		<statusbarpanel id="hf_Status" 
+			context="hf_StatusContextMenu" 
+			onmousedown="HttpFox.onClickStatusIcon(event)">
+            <image id="hf_StatusLogoImage" tooltiptext="HttpFox" />
+        </statusbarpanel>
+    
+        <menupopup id="hf_StatusContextMenu" onpopupshowing="">
+            <menuitem 
+            	label="&browseroverlay.statusbar.menu.detach.label;" 
+            	command="cmd_hf_detach"
+            	image="chrome://httpfox/skin/application_double.png"
+            	/>
+            <menuseparator/>
+            <menuitem 
+            	label="&browseroverlay.statusbar.menu.options.label;" 
+            	oncommand="HttpFox.OpenOptions();"/>
+        </menupopup>
+	</statusbar>
+	
+	<!-- view menu (firefox) -->
+	<menupopup id="menu_viewPopup">
+		<menuitem id="hf_menu_viewToggleHttpFox" 
+			insertbefore="toggle_taskbar"
+			label="&browseroverlay.menuview.httpfox.label;" 
+			type="checkbox"
+			key="hf_key_1" 
+			command="cmd_hf_togglePanel" />
+	</menupopup>
+
+	<!-- view menu (seamonkey) -->
+    <menupopup id="menu_View_Popup">
+		<menuitem id="hf_menu_viewToggleHttpFox" 
+			insertafter="menuitem_fullScreen"
+			label="&browseroverlay.menuview.httpfox.label;" 
+			type="checkbox"
+			key="hf_key_1" 
+			command="cmd_hf_togglePanel" />
+    </menupopup>
+	
+	<!-- tools menu (seamonkey) -->
+	<menupopup id="toolsPopup">
+		<menu id="hf_menu_HttpFox" 
+			class="menuitem-iconic" 
+			image="chrome://httpfox/skin/globe16.png"
+			label="&browseroverlay.menutools.httpfox.label;" />
+    </menupopup>
+	
+	<!-- tools menu (firefox) -->
+	<menupopup id="menu_ToolsPopup">
+		<menu id="hf_menu_HttpFox" 
+			class="menuitem-iconic" 
+			image="chrome://httpfox/skin/globe16.png"
+			label="&browseroverlay.menutools.httpfox.label;" 
+			insertbefore="javascriptConsole" />
+    </menupopup>
+
+	<vbox id="appcontent"> <!-- overlay firefox content window -->
+		<splitter id="hf_PanelSplitter" collapsed="true" persist="height" />
+		<vbox id="hf_PanelNormal" collapsed="true" persist="height" >
+			<vbox id="hf_RequestList" />
+			<splitter id="hf_MiddleSplitter" persist="height"/>
+			<vbox id="hf_RequestDetails" />
+		</vbox>
+	</vbox>
+</overlay>

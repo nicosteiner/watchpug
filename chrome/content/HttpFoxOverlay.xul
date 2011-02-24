@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://HttpFox/skin/HttpFox.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://httpfox/locale/HttpFox.dtd">
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<commandset id="mainCommandSet">
+		<command id="cmd_hf_startWatching" oncommand="HttpFox.cmd_hf_startWatching();"/>
+		<command id="cmd_hf_stopWatching" oncommand="HttpFox.cmd_hf_stopWatching();" disabled="true"/>
+		<command id="cmd_hf_toggleWatching" oncommand="HttpFox.cmd_hf_toggleWatching();"/>
+		<command id="cmd_hf_clear" oncommand="HttpFox.cmd_hf_clear();"/>
+		<command id="cmd_hf_togglePanel" oncommand="HttpFox.cmd_hf_togglePanel();"/>
+		<command id="cmd_hf_quickFilterChanged" oncommand="HttpFox.cmd_hf_quickFilterChanged();"/>
+		<command id="cmd_hf_close" oncommand="HttpFox.cmd_hf_close();"/>
+		<command id="cmd_hf_showAbout" oncommand="HttpFox.cmd_hf_showAbout();"/>
+		<command id="cmd_hf_detach" oncommand="HttpFox.cmd_hf_detach();"/>
+	</commandset>
+
+	<keyset id="mainKeyset">
+		<key id="hf_key_1" keycode="VK_F2" modifiers="shift" command="cmd_hf_togglePanel"/>
+		<key id="hf_key_2" keycode="VK_F3" modifiers="shift" command="cmd_hf_toggleWatching"/>
+		<!--<key id="hf_key_3" keycode="VK_F2" modifiers="control" command="cmd_hf_startWatching"/>
+		<key id="hf_key_4" keycode="VK_F3" modifiers="control" command="cmd_hf_stopWatching"/>-->
+	</keyset>
+
+	<menu id="hf_menu_HttpFox">
+		<menupopup>
+			<menuitem id="hf_menu_viewToggleHttpFox" 
+				insertbefore="toggle_taskbar"
+				label="&overlay.requestlist.menu.menupop.toggle.label;" 
+				type="checkbox"
+				command="cmd_hf_togglePanel" />
+			<menuitem 
+				label="&overlay.requestlist.menu.menupop.detach.label;" 
+				command="cmd_hf_detach" />
+			<menuseparator/>
+			<menuitem 
+				label="&overlay.requestlist.menu.menupop.options.label;" 
+				oncommand="HttpFox.OpenOptions();" />
+		</menupopup>
+	</menu>
+	
+	<!--<vbox id="hf_Panel" collapsed="true" persist="height" flex="1">-->
+		<vbox id="hf_RequestList" persist="height" flex="1">
+			<toolbox>
+			<!--<toolbar id="hf_TopBar" align="center" flex="0" style="-moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 0px; border-left-width: 0px; border-top-width: 1px; border-right-width: 1px;">-->
+				<toolbar id="hf_TopBar" align="center" flex="0">
+					<toolbarbutton id="hf_TopBarButton_Start" label="&overlay.requestlist.toolbox.toolbar.start.button;"
+						tooltiptext="&overlay.requestlist.toolbox.toolbar.start.tooltip;" command="cmd_hf_startWatching" />
+	
+					<toolbarbutton id="hf_TopBarButton_Stop" label="&overlay.requestlist.toolbox.toolbar.stop.button;" 
+						tooltiptext="&overlay.requestlist.toolbox.toolbar.stop.tooltip;" command="cmd_hf_stopWatching" />
+							
+					<toolbarbutton id="hf_TopBarButton_Clear" label="&overlay.requestlist.toolbox.toolbar.clear.button;"
+						tooltiptext="&overlay.requestlist.toolbox.toolbar.clear.tooltip;" command="cmd_hf_clear"/>
+	
+					<toolbarseparator id="hf_Separator" />
+
+					<image id="hf_QuickFilterImage" control="hf_QuickFilterBox" />
+					<textbox id="hf_QuickFilterBox" autocomplete="true" 
+						tooltiptext="&overlay.requestlist.toolbox.toolbar.filter.tooltip;" type="timed" timeout="500" command="cmd_hf_quickFilterChanged" />
+		
+					<checkbox id="hf_AutoScrollCheckbox" label="&overlay.requestlist.toolbox.toolbar.autoscroll.checkbox;" 
+						checked="true" persist="checked" />
+		
+					<toolbarspring/>
+					
+					<toolbarbutton id="hf_TopBarButton_Detach" 
+						tooltiptext="&overlay.requestlist.toolbox.toolbar.detach.tooltip;" command="cmd_hf_detach" align="right"/>
+						
+					<toolbarbutton id="hf_TopBarButton_Close" 
+						tooltiptext="&overlay.requestlist.toolbox.toolbar.close.tooltip;" command="cmd_hf_close" align="right"/>
+				</toolbar>
+			</toolbox>
+			
+		<!--<hbox flex="1">-->
+			<popupset>
+				<commandset>
+					<command id="cmd_Clipboard_CopyTreeRowCell" oncommand="HttpFox.Clipboard_CopyTreeRowCell()" />
+					<command id="cmd_Clipboard_CopyTreeRow" oncommand="HttpFox.Clipboard_CopyTreeRow()" />
+					<command id="cmd_Clipboard_CopyTreeAllRows" oncommand="HttpFox.Clipboard_CopyTreeAllRows()" />
+				</commandset>
+				
+				<menupopup id="hf_RequestTreeContextMenu" onpopupshowing="HttpFox.updateRequestContextMenu(event)">
+					<menuitem label="&overlay.requestlist.popup.copyTreeRowCell.label;" command="cmd_Clipboard_CopyTreeRowCell" />
+					<menuitem label="&overlay.requestlist.popup.copyTreeRow.label;" command="cmd_Clipboard_CopyTreeRow"/>
+					<menuitem label="&overlay.requestlist.popup.copyTreeAllRows.label;" command="cmd_Clipboard_CopyTreeAllRows" />
+				</menupopup>
+			</popupset>
+
+			<tree id="hf_RequestTree" context="hf_RequestTreeContextMenu" flex="1" onselect="HttpFox.selectionChange_RequestTree();">
+			  <treecols>
+			    <treecol id="hf_Column_Started" 
+			    	label="&overlay.requestlist.tree.col.start.label;"
+			    	persist="width hidden"
+			    	flex="0" 
+			    	style="width:75px; -moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 1px; border-right-width: 1px;"/>
+			    
+			    <splitter class="tree-splitter"/>
+			    
+			    <treecol id="hf_Column_Time"
+			    	label="&overlay.requestlist.tree.col.time.label;"
+			    	persist="width hidden"
+			    	flex="0" 
+			    	style="width:55px; text-align:right; -moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 1px; border-top-width: 1px; border-right-width: 1px;"/>
+			    
+			    <splitter class="tree-splitter"/>
+			    
+			    <treecol id="hf_Column_Sent" 
+			    	label="&overlay.requestlist.tree.col.sent.label;"
+			    	persist="width hidden"
+			    	flex="0" 
+			    	style="width:70px; text-align:right; -moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 1px; border-top-width: 1px; border-right-width: 1px;"/>
+			    
+			    <splitter class="tree-splitter"/>
+			    
+			    <treecol id="hf_Column_Received" 
+			    	label="&overlay.requestlist.tree.col.received.label;"
+			    	persist="width hidden"
+			    	flex="0" 
+			    	style="width:80px; text-align:right; -moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 1px; border-top-width: 1px; border-right-width: 1px;"/>
+			    
+			    <splitter class="tree-splitter"/>
+			    
+			    <treecol id="hf_Column_Method" 
+			    	label="&overlay.requestlist.tree.col.method.label;"
+			    	persist="width hidden"
+			    	flex="0" 
+			    	style="width:55px; -moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 1px; border-top-width: 1px; border-right-width: 1px;"/>
+			    
+			    <splitter class="tree-splitter"/>
+			    
+			    <treecol id="hf_Column_Result" 
+			    	label="&overlay.requestlist.tree.col.result.label;"
+			    	persist="width hidden"
+			    	flex="0" 
+			    	style="width:65px; -moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 1px; border-top-width: 1px; border-right-width: 1px;"/>
+			    
+			    <splitter class="tree-splitter"/>
+			    
+			    <treecol id="hf_Column_Type" 
+			    	label="&overlay.requestlist.tree.col.type.label;"
+			    	persist="width hidden"
+			    	flex="1" 
+			    	style="-moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 1px; border-top-width: 1px; border-right-width: 1px;"/>
+			    
+			    <splitter class="tree-splitter"/>
+			    
+			    <treecol id="hf_Column_URL" 
+					crop="center"
+			    	persist="width hidden"
+					label="&overlay.requestlist.tree.col.url.label;"
+			    	flex="3" 
+			    	style="-moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 1px; border-top-width: 1px; border-right-width: 0px;"/>
+			  </treecols>
+			  <treechildren id="hf_TreeChildren" />
+			</tree>
+		<!--</hbox>-->
+		</vbox>
+	
+		<splitter id="hf_MiddleSplitter" persist="height"/>
+	
+		<vbox id="hf_RequestDetails" persist="height" flex="1">
+			<popupset>
+	  			<commandset>
+		  			<command id="cmd_Clipboard_CopyTreeRowCell" oncommand="HttpFox.Clipboard_CopyTreeRowCell()" />
+		  			<command id="cmd_Clipboard_CopyTreeRow" oncommand="HttpFox.Clipboard_CopyTreeRow()" />
+		  			<command id="cmd_Clipboard_CopyTreeAllRows" oncommand="HttpFox.Clipboard_CopyTreeAllRows()" />
+		  		</commandset>
+		  		
+				<menupopup id="hf_RequestDetailsContextMenu" onpopupshowing="HttpFox.updateRequestContextMenu(event)">
+	  				<menuitem label="&overlay.requestdetails.popup.copyTreeRowCell.label;" command="cmd_Clipboard_CopyTreeRowCell" />
+	  				<menuitem label="&overlay.requestdetails.popup.copyTreeRow.label;" command="cmd_Clipboard_CopyTreeRow"/>
+	  				<menuitem label="&overlay.requestdetails.popup.copyTreeAllRows.label;" command="cmd_Clipboard_CopyTreeAllRows" />
+	  			</menupopup>
+	  		</popupset>
+
+			<hbox flex="1">
+				<tabbox id="hf_Tablist" flex="1" >
+					<tabs id="hf_RequestDetailsTabs" onselect="HttpFox.selectionChange_RequestDetails();">
+					    <tab label="&overlay.requestdetails.tablist.headers.label;" />
+						<tab label="&overlay.requestdetails.tablist.cookies.label;" />
+						<!--<tab label="Cache" />-->
+					    <tab label="&overlay.requestdetails.tablist.querystring.label;" />
+					    <tab label="&overlay.requestdetails.tablist.post.label;" />
+						<tab label="&overlay.requestdetails.tablist.content.label;" />
+					    <tab label="&overlay.requestdetails.tablist.debug.label;" id="hf_DebugTabHeader" />
+					</tabs>
+					
+					<tabpanels flex="1">
+					
+						<!--<tabpanel id="hf_SummaryTab">
+							<vbox id="bla" flex="1">
+							</vbox>
+						</tabpanel>-->
+
+						<tabpanel id="hf_HeadersTab" orient="vertical">
+				        	<hbox flex="1">
+				        		<hbox flex="1">
+				            	<tree context="hf_RequestDetailsContextMenu" id="hf_RequestHeadersTree" flex="1" hidecolumnpicker="true">
+								  <treecols>
+								    <treecol id="hf_HeaderColumnName" 
+								    	label="&overlay.requestdetails.headerstab.requestheadertree.col.reqheader.label;" 
+								    	flex="1" 
+								    	style="width:50px;"/>
+								    
+								    <splitter class="tree-splitter"/>
+								    
+								    <treecol id="hf_HeaderColumnValue" 
+								    	label="&overlay.requestdetails.headerstab.requestheadertree.col.value.label;" 
+								    	flex="5" 
+								    	style=""/>
+								    
+								   </treecols>
+								   <treechildren id="hf_RequestHeadersChildren"/>
+								 </tree>
+								</hbox>
+								
+								<hbox flex="1">
+				            	<tree context="hf_RequestDetailsContextMenu" id="hf_ResponseHeadersTree" flex="1" hidecolumnpicker="true">
+								  <treecols>
+								    <treecol id="hf_HeaderColumnName" 
+								    	label="&overlay.requestdetails.headerstab.responseheadertree.col.respheader.label;" 
+								    	flex="1"
+								    	style="width:50px;"/>
+								    
+								    <splitter class="tree-splitter"/>
+								    
+								    <treecol id="hf_HeaderColumnValue" 
+								    	label="&overlay.requestdetails.headerstab.responseheadertree.col.value.label;" 
+								    	flex="5" 
+								    	style=""/>
+								    
+								   </treecols>
+								   <treechildren id="hf_ResponseHeadersChildren"/>
+								 </tree>
+								</hbox>
+					         </hbox>
+						</tabpanel>
+						
+						<tabpanel id="hf_CookiesTab" orient="vertical">
+							<vbox flex="1">
+					    		<tree context="hf_RequestDetailsContextMenu" id="hf_CookiesSentTree" flex="1" hidecolumnpicker="true">
+									<treecols>
+										<treecol id="hf_CookiesColumnName" 
+											label="&overlay.requestdetails.headerstab.cookiessenttree.col.cookiesent.label;" 
+											flex="0"
+											style="width:120px;"/>
+										
+										<splitter class="tree-splitter"/>
+										
+										<treecol id="hf_CookiesColumnValue" 
+											label="&overlay.requestdetails.headerstab.cookiessenttree.col.value.label;" 
+											flex="6" 
+											style=""/>
+										
+										<splitter class="tree-splitter"/>
+										
+										<treecol id="hf_CookiesColumnPath" 
+											label="&overlay.requestdetails.headerstab.cookiessenttree.col.path.label;" 
+											flex="1" 
+											style=""/>
+											
+										<splitter class="tree-splitter"/>
+										
+										<treecol id="hf_CookiesColumnDomain" 
+											label="&overlay.requestdetails.headerstab.cookiessenttree.col.domain.label;" 
+											flex="2" 
+											style=""/>
+											
+										<splitter class="tree-splitter"/>
+										
+										<treecol id="hf_CookiesColumnExpires" 
+											label="&overlay.requestdetails.headerstab.cookiessenttree.col.expires.label;" 
+											flex="4" 
+											style=""/>
+										
+									</treecols>
+									<treechildren id="hf_CookiesSentChildren"/>
+								</tree>
+								
+								<splitter id="hf_MiddleSplitter" persist="height"/>
+								
+								<tree context="hf_RequestDetailsContextMenu" id="hf_CookiesReceivedTree" flex="1" hidecolumnpicker="true">
+									<treecols>
+										<treecol id="hf_CookiesColumnName" 
+											label="&overlay.requestdetails.headerstab.cookiesrectree.col.cookierec.label;" 
+											flex="0"
+											style="width:120px;"/>
+										
+										<splitter class="tree-splitter"/>
+										
+										<treecol id="hf_CookiesColumnValue" 
+											label="&overlay.requestdetails.headerstab.cookiesrectree.col.value.label;" 
+											flex="6" 
+											style=""/>
+										
+										<splitter class="tree-splitter"/>
+										
+										<treecol id="hf_CookiesColumnPath" 
+											label="&overlay.requestdetails.headerstab.cookiesrectree.col.path.label;" 
+											flex="1" 
+											style=""/>
+											
+										<splitter class="tree-splitter"/>
+										
+										<treecol id="hf_CookiesColumnDomain" 
+											label="&overlay.requestdetails.headerstab.cookiesrectree.col.domain.label;" 
+											flex="2" 
+											style=""/>
+											
+										<splitter class="tree-splitter"/>
+										
+										<treecol id="hf_CookiesColumnExpires" 
+											label="&overlay.requestdetails.headerstab.cookiesrectree.col.expires.label;" 
+											flex="4" 
+											style=""/>
+										
+									</treecols>
+									<treechildren id="hf_CookiesReceivedChildren"/>
+								</tree>
+							</vbox>
+						</tabpanel>
+						
+						<!--<tabpanel id="hf_CacheInfoTab" orient="vertical">
+				    		<tree context="hf_RequestDetailsContextMenu" style="border: none;" id="hf_CacheInfoTree" flex="1" hidecolumnpicker="true">
+								<treecols>
+									<treecol id="hf_CacheInfoColumnName" 
+										label="" 
+										flex="1" 
+										style="width:50px; -moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 1px; border-right-width: 1px;"/>
+									
+									<splitter class="tree-splitter"/>
+									
+									<treecol id="hf_CacheInfoColumnValue" 
+										label="Value" 
+										flex="5" 
+										style="-moz-border-top-colors: ThreeDLightShadow ThreeDLightShadow; border-bottom-width: 1px; border-left-width: 1px; border-top-width: 1px; border-right-width: 0px;"/>
+									
+								</treecols>
+								<treechildren id="hf_CacheInfoChildren"/>
+							</tree>
+						</tabpanel>-->
+						
+						<tabpanel id="hf_QueryStringTab" orient="vertical">
+				    		<tree context="hf_RequestDetailsContextMenu" id="hf_QueryStringTree" flex="1" hidecolumnpicker="true">
+								<treecols>
+									<treecol id="hf_QueryStringColumnName" 
+										label="&overlay.requestdetails.querystab.querystringtree.col.param.label;" 
+										flex="1" 
+										style="width:50px;"/>
+									
+									<splitter class="tree-splitter"/>
+									
+									<treecol id="hf_QueryStringColumnValue" 
+										label="&overlay.requestdetails.querystab.querystringtree.col.value.label;" 
+										flex="5" 
+										style=""/>
+									
+								</treecols>
+								<treechildren id="hf_QueryStringChildren"/>
+							</tree>
+						</tabpanel>
+						
+						<tabpanel id="hf_PostDataTab" orient="vertical">
+							<vbox flex="1">
+								<label id="hf_PostDataMimeType" />
+								<box flex="1" id="hf_PostDataPrettyBox">
+						    		<tree collapsed="false" context="hf_RequestDetailsContextMenu" id="hf_PostDataTree" flex="1" hidecolumnpicker="true">
+										<treecols>
+											<treecol id="hf_PostDataColumnName" 
+												label="&overlay.requestdetails.posttab.prettybox.datatree.col.param.label;" 
+												flex="1" 
+												style="width:50px;"/>
+											
+											<splitter class="tree-splitter"/>
+											
+											<treecol id="hf_PostDataColumnValue" 
+												label="&overlay.requestdetails.posttab.prettybox.datatree.col.value.label;" 
+												flex="5" 
+												style=""/>
+											
+										</treecols>
+										<treechildren id="hf_PostDataChildren"/>
+									</tree>
+	
+									<browser id="hf_PostDataPretty" class="textbox_browser" collapsed="true" style="background-color:#FFFFFF; font-family: -moz-fixed; font-weight: normal;" type="content" flex="1" readonly="true" wrap="false" multiline="true"/>
+								</box>
+	
+								<box flex="1" id="hf_PostDataRawBox">	
+									<textbox id="hf_PostDataRawOutput" style="background-color:#FFFFFF; font-family: -moz-fixed; font-weight: normal;" type="content" flex="1" readonly="true" wrap="false" multiline="true"/>
+								</box>
+								
+								<radiogroup id="hf_PostDataRadioGroup" orient="horizontal">
+									<radio id="hf_PostDataRadioPretty" label="&overlay.requestdetails.posttab.pretty.radio;" onclick="HttpFox.selectionChange_PostDataDisplayTypePretty();" selected="true" />
+									<radio id="hf_PostDataRadioRaw" label="&overlay.requestdetails.posttab.raw.radio;" onclick="HttpFox.selectionChange_PostDataDisplayTypeRaw();" />
+								</radiogroup>
+							</vbox>
+						</tabpanel>
+						
+						<tabpanel id="hf_ContentTab" orient="vertical">
+							<vbox flex="1">
+								<label id="hf_ContentTypeLabel" />
+				    			<browser id="hf_PrettyContentOutput" class="textbox_browser" type="content" flex="1" readonly="true" wrap="false" multiline="true"/>
+			
+				    			<textbox id="hf_RawContentOutput" class="textbox_browser" type="content" flex="1" readonly="true" wrap="false" multiline="true"/>
+			
+				    			<radiogroup id="hf_ContentRadioGroup" orient="horizontal">
+									<radio id="hf_ContentRadioPretty" label="&overlay.requestdetails.contenttab.pretty.radio;" onclick="HttpFox.selectionChange_ContentDisplayTypePretty();" selected="true" />
+									<radio id="hf_ContentRadioRaw" label="&overlay.requestdetails.contenttab.raw.radio;" onclick="HttpFox.selectionChange_ContentDisplayTypeRaw();" />
+								</radiogroup>
+				    		</vbox>
+						</tabpanel>
+						
+						<tabpanel id="hf_DebugTab" orient="vertical">
+				    		<browser id="hf_DebugOutput" class="textbox_browser" src="about:blank" type="content" flex="1"/>
+						</tabpanel>
+						
+					</tabpanels>
+				</tabbox>
+			</hbox>
+		</vbox>
+<!--	</vbox>-->
+
+</overlay>

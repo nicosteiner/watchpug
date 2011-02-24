@@ -1,0 +1,94 @@
+<!ENTITY  options.title                                                               "HttpFox Opties">
+<!ENTITY  options.startAtBrowserStart.checkbox                                        "Start automatisch met analyseren wanneer de browser start">
+<!ENTITY  options.alwaysOpenDetached.checkbox                                         "Open HttpFox altijd in een eigen scherm">
+<!ENTITY  options.colorRequests.checkbox                                              "Kleur aanvragen op basis van de status">
+<!ENTITY  options.forceCaching.checkbox                                               "Verwijder de INHIBIT_CACHING aanvraag-kanaal markering (helpt bij het verkrijgen van inhoud uit de buffer)">
+
+<!ENTITY  overlay.requestlist.menu.menupop.toggle.label                               "Weergeef HttpFox">
+<!ENTITY  overlay.requestlist.menu.menupop.detach.label                               "Open in een eigen venster">
+<!ENTITY  overlay.requestlist.menu.menupop.options.label                              "Opties">
+
+<!ENTITY  overlay.requestlist.toolbox.toolbar.start.button                            "Begin">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.start.tooltip                           "Begin met analyseren">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.stop.button                             "Stop">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.stop.tooltip                            "Stop met analyseren">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.clear.button                            "Legen">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.clear.tooltip                           "Legen">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.filter.tooltip                          "Filter URL">    
+<!ENTITY  overlay.requestlist.toolbox.toolbar.autoscroll.checkbox                     "Automatisch scrollen">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.detach.tooltip                          "Losmaken">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.close.tooltip                           "Sluiten">
+
+<!ENTITY  overlay.requestlist.popup.copyTreeRowCell.label                             "Kopieer cel">
+<!ENTITY  overlay.requestlist.popup.copyTreeRow.label                                 "Kopieer rij">
+<!ENTITY  overlay.requestlist.popup.copyTreeAllRows.label                             "Kopieer alle rijen">
+
+<!ENTITY  overlay.requestlist.tree.col.start.label                                    "Begon">
+<!ENTITY  overlay.requestlist.tree.col.time.label                                     "Tijd">
+<!ENTITY  overlay.requestlist.tree.col.sent.label                                     "Verzonden">
+<!ENTITY  overlay.requestlist.tree.col.received.label                                 "Ontvangen">
+<!ENTITY  overlay.requestlist.tree.col.method.label                                   "Methode">
+<!ENTITY  overlay.requestlist.tree.col.result.label                                   "Resultaat">
+<!ENTITY  overlay.requestlist.tree.col.type.label                                     "Type">
+<!ENTITY  overlay.requestlist.tree.col.url.label                                      "URL">
+
+<!ENTITY  overlay.requestdetails.popup.copyTreeRowCell.label                          "Kopieer cell">
+<!ENTITY  overlay.requestdetails.popup.copyTreeRow.label                              "Kopieer rij">
+<!ENTITY  overlay.requestdetails.popup.copyTreeAllRows.label                          "Kopieer alle rijen">
+
+<!ENTITY  overlay.requestdetails.tablist.headers.label                                "Headers">
+<!ENTITY  overlay.requestdetails.tablist.cookies.label                                "Cookies">
+<!ENTITY  overlay.requestdetails.tablist.querystring.label                            "Query String">
+<!ENTITY  overlay.requestdetails.tablist.post.label                                   "POST gegevens">
+<!ENTITY  overlay.requestdetails.tablist.content.label                                "Inhoud">
+<!ENTITY  overlay.requestdetails.tablist.debug.label                                  "Debug Logboek">
+
+<!ENTITY  overlay.requestdetails.headerstab.requestheadertree.col.reqheader.label     "Aanvraag Header">
+<!ENTITY  overlay.requestdetails.headerstab.requestheadertree.col.value.label         "Inhoud">
+
+<!ENTITY  overlay.requestdetails.headerstab.responseheadertree.col.respheader.label   "Antwoord Header">
+<!ENTITY  overlay.requestdetails.headerstab.responseheadertree.col.value.label        "Inhoud">
+
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.cookiesent.label      "Verzonden cookie">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.value.label           "Inhoud">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.path.label            "Pad">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.domain.label          "Host">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.expires.label         "Verloopt">
+
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.cookierec.label        "Ontvangen cookie">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.value.label            "Inhoud">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.path.label             "Pad">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.domain.label           "Host">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.expires.label          "Verloopt">
+
+<!ENTITY  overlay.requestdetails.querystab.querystringtree.col.param.label            "Parameter">
+<!ENTITY  overlay.requestdetails.querystab.querystringtree.col.value.label            "Inhoud">
+
+<!ENTITY  overlay.requestdetails.posttab.prettybox.datatree.col.param.label           "Parameter">
+<!ENTITY  overlay.requestdetails.posttab.prettybox.datatree.col.value.label           "Inhoud">
+<!ENTITY  overlay.requestdetails.posttab.pretty.radio                                 "Geformatteerd">
+<!ENTITY  overlay.requestdetails.posttab.raw.radio                                    "Onbewerkt">
+
+<!ENTITY  overlay.requestdetails.contenttab.type.label                                "Type: ">
+<!ENTITY  overlay.requestdetails.contenttab.pretty.radio                              "Geformatteerd">
+<!ENTITY  overlay.requestdetails.contenttab.raw.radio                                 "Onbewerkt">
+
+<!ENTITY  browseroverlay.statusbar.menu.detach.label                                  "Open in een eigen venster">
+<!ENTITY  browseroverlay.statusbar.menu.options.label                                 "Opties">
+
+<!ENTITY  browseroverlay.menuview.httpfox.label                                       "HttpFox">
+<!ENTITY  browseroverlay.menutools.httpfox.label                                      "HttpFox">
+
+<!ENTITY  window.title                                                                "HttpFox">
+
+
+
+
+
+
+
+
+
+
+
+

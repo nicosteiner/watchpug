@@ -1,0 +1,82 @@
+<!ENTITY  options.title                                                               "HttpFox Einstellungen">
+<!ENTITY  options.startAtBrowserStart.checkbox                                        "Automatisch starten wenn der Browser startet">
+<!ENTITY  options.alwaysOpenDetached.checkbox                                         "HttpFox immer in einem neuen Fenster öffnen">
+<!ENTITY  options.colorRequests.checkbox                                              "Die Requests nach ihrem Status einfärben">
+<!ENTITY  options.forceCaching.checkbox                                               "Das INHIBIT_CACHING flag vom Request-Kanal entfernen (hilft den response inhalt aus dem Cache zu lesen)">
+
+<!ENTITY  overlay.requestlist.menu.menupop.toggle.label                               "HttpFox ein/ausblenden">
+<!ENTITY  overlay.requestlist.menu.menupop.detach.label                               "In einem neuen Fenster öffnen">
+<!ENTITY  overlay.requestlist.menu.menupop.options.label                              "Einstellungen">
+
+<!ENTITY  overlay.requestlist.toolbox.toolbar.start.button                            "Start">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.start.tooltip                           "Überwachung starten">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.stop.button                             "Stop">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.stop.tooltip                            "Überwachung stoppen">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.clear.button                            "Leeren">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.clear.tooltip                           "Liste leeren">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.filter.tooltip                          "Filter URL">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.autoscroll.checkbox                     "Autoscroll">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.detach.tooltip                          "In einem neuen Fenster öffnen">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.close.tooltip                           "Schließen">
+
+<!ENTITY  overlay.requestlist.popup.copyTreeRowCell.label                             "Zelle kopieren">
+<!ENTITY  overlay.requestlist.popup.copyTreeRow.label                                 "Reihe kopieren">
+<!ENTITY  overlay.requestlist.popup.copyTreeAllRows.label                             "Alle Reihen kopieren">
+
+<!ENTITY  overlay.requestlist.tree.col.start.label                                    "Gestartet">
+<!ENTITY  overlay.requestlist.tree.col.time.label                                     "Dauer">
+<!ENTITY  overlay.requestlist.tree.col.sent.label                                     "Gesendet">
+<!ENTITY  overlay.requestlist.tree.col.received.label                                 "Empfangen">
+<!ENTITY  overlay.requestlist.tree.col.method.label                                   "Methode">
+<!ENTITY  overlay.requestlist.tree.col.result.label                                   "Resultat">
+<!ENTITY  overlay.requestlist.tree.col.type.label                                     "Typ">
+<!ENTITY  overlay.requestlist.tree.col.url.label                                      "URL">
+
+<!ENTITY  overlay.requestdetails.popup.copyTreeRowCell.label                          "Zelle kopieren">
+<!ENTITY  overlay.requestdetails.popup.copyTreeRow.label                              "Reihe kopieren">
+<!ENTITY  overlay.requestdetails.popup.copyTreeAllRows.label                          "Alle Reihen kopieren">
+
+<!ENTITY  overlay.requestdetails.tablist.headers.label                                "Header">
+<!ENTITY  overlay.requestdetails.tablist.cookies.label                                "Cookies">
+<!ENTITY  overlay.requestdetails.tablist.querystring.label                            "Query String">
+<!ENTITY  overlay.requestdetails.tablist.post.label                                   "POST Daten">
+<!ENTITY  overlay.requestdetails.tablist.content.label                                "Content">
+<!ENTITY  overlay.requestdetails.tablist.debug.label                                  "Debug Log">
+
+<!ENTITY  overlay.requestdetails.headerstab.requestheadertree.col.reqheader.label     "Request Header">
+<!ENTITY  overlay.requestdetails.headerstab.requestheadertree.col.value.label         "Wert">
+
+<!ENTITY  overlay.requestdetails.headerstab.responseheadertree.col.respheader.label   "Response Header">
+<!ENTITY  overlay.requestdetails.headerstab.responseheadertree.col.value.label        "Wert">
+
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.cookiesent.label      "Cookie gesendet">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.value.label           "Wert">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.path.label            "Pfad">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.domain.label          "Domain">
+<!ENTITY  overlay.requestdetails.headerstab.cookiessenttree.col.expires.label         "Ablaufdatum">
+
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.cookierec.label        "Cookie empfangen">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.value.label            "Wert">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.path.label             "Pfad">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.domain.label           "Domain">
+<!ENTITY  overlay.requestdetails.headerstab.cookiesrectree.col.expires.label          "Ablaufdatum">
+
+<!ENTITY  overlay.requestdetails.querystab.querystringtree.col.param.label            "Parameter">
+<!ENTITY  overlay.requestdetails.querystab.querystringtree.col.value.label            "Wert">
+
+<!ENTITY  overlay.requestdetails.posttab.prettybox.datatree.col.param.label           "Parameter">
+<!ENTITY  overlay.requestdetails.posttab.prettybox.datatree.col.value.label           "Wert">
+<!ENTITY  overlay.requestdetails.posttab.pretty.radio                                 "Aufbereitet">
+<!ENTITY  overlay.requestdetails.posttab.raw.radio                                    "Rohdaten">
+
+<!ENTITY  overlay.requestdetails.contenttab.type.label                                "Typ: ">
+<!ENTITY  overlay.requestdetails.contenttab.pretty.radio                              "Aufbereitet">
+<!ENTITY  overlay.requestdetails.contenttab.raw.radio                                 "Rohdaten">
+
+<!ENTITY  browseroverlay.statusbar.menu.detach.label                                  "In eigenem Fenster öffnen">
+<!ENTITY  browseroverlay.statusbar.menu.options.label                                 "Einstellungen">
+
+<!ENTITY  browseroverlay.menuview.httpfox.label                                       "HttpFox">
+<!ENTITY  browseroverlay.menutools.httpfox.label                                      "HttpFox">
+
+<!ENTITY  window.title                                                                "HttpFox">
