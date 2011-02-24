@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://httpfox/locale/HttpFox.dtd">
+<bindings xmlns="http://www.mozilla.org/xbl"
+	xmlns:xbl="http://www.mozilla.org/xbl"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<binding id="startup">
+		<implementation>
+			<constructor><![CDATA[
+				HttpFox.initGraphics(false);
+			]]></constructor>
+			<destructor><![CDATA[
+				shutdownHttpFox();
+			]]></destructor>
+		</implementation>
+	</binding>
+
+	<binding id="windowStartup">
+		<implementation>
+			<constructor><![CDATA[
+				HttpFox.initGraphics(true);
+			]]></constructor>
+			<destructor><![CDATA[
+				shutdownHttpFox();
+			]]></destructor>
+		</implementation>
+	</binding>
+
+</bindings>
