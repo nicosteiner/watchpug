@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<?xml-stylesheet href="chrome://amivalid/content/css/amivalid.css"
-                 type="text/css"?>
-<!DOCTYPE window SYSTEM "chrome://amivalid/locale/AmIValid.dtd">  
+<?xml-stylesheet href="chrome://amivalid/content/css/amivalid.css" type="text/css"?>
+<!DOCTYPE linktargetfinder SYSTEM "chrome://amivalid/locale/translations.dtd">
 <?xul-overlay href="chrome://amivalid/content/AmIValidOverlay.xul"?>
 
-<overlay id="amivalid" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="amivalid"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
 	<!-- scripts start -->
 	<script type="application/x-javascript" src="chrome://amivalid/content/AmIValid.js"/>
@@ -14,40 +14,24 @@
 	<statusbar id="status-bar">
   
 		<statusbarpanel id="amivalid_Status" context="amivalid_StatusContextMenu" onmousedown="AmIValid.onClickStatusIcon(event)">
-      <image id="amivalid_StatusLogoImage" src="chrome://senseo/content/img/logo-16.png" tooltiptext="AmIValid" />
+      <image id="amivalid_StatusLogoImage" src="chrome://amivalid/content/logo-16.png" tooltiptext="AmIValid" />
     </statusbarpanel>
     
     <menupopup id="amivalid_StatusContextMenu" onpopupshowing="">
-      <menuitem label="&browseroverlay.statusbar.menu.options.label;" oncommand="AmIValid.OpenOptions();" />
+      <menuitem label="&menu.home;" oncommand="AmIValid.goHome()"/>
+      <menuseparator/>
+      <menuitem label="&menu.hide-status-bar;" type="checkbox" oncommand="AmIValid.onToggleOption(this)" option="amivalid.hidestatusbar"/>
     </menupopup>
     
 	</statusbar>
   
-	<vbox id="appcontent">
+	<vbox id="appcontent"> <!-- overlay content window -->
 		<splitter id="amivalid_PanelSplitter" collapsed="true" persist="height" />
 		<vbox id="amivalid_PanelNormal" collapsed="true" persist="height" >
 			<vbox id="amivalid_RequestList" />
 			<splitter id="amivalid_MiddleSplitter" persist="height"/>
-			<!--<vbox id="amivalid_RequestDetails" />-->
+			<vbox id="amivalid_RequestListTable" />
 		</vbox>
 	</vbox>
   
-	<!--
-	<menupopup id="menu_viewPopup">
-		<menuitem id="amivalid_menu_viewToggleAmIValid" 
-			insertbefore="toggle_taskbar"
-			label="&browseroverlay.menuview.amivalid.label;" 
-			type="checkbox"
-			key="amivalid_key_1" 
-			command="cmd_amivalid_togglePanel" />
-	</menupopup>
-
-	<menupopup id="menu_ToolsPopup">
-		<menu id="amivalid_menu_AmIValid" 
-			class="menuitem-iconic" 
-			image="chrome://amivalid/skin/globe16.png"
-			label="&browseroverlay.menutools.amivalid.label;" 
-			insertbefore="javascriptConsole" />
-  </menupopup>
-  -->
 </overlay>

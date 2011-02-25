@@ -1,11 +1,9 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE window SYSTEM "chrome://amivalid/locale/translations.dtd"> 
-<prefwindow id="amivalid_PrefWindow"
-     title="&options.title;"
-     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<prefwindow id="amivalid_PrefWindow" title="&pref.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-	<prefpane id="amivalid_PrefPane" label="&options.title;">
+	<prefpane id="amivalid_PrefPane" label="&pref.options;">
   
 		<preferences>
       <!--
