@@ -1,5 +1,5 @@
 /*
-AmIValid
+WatchPug
 Copyright (C) 2010 Nico Steiner
 
 Original source code came from:
@@ -22,6 +22,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-AmIValidUtils = {
+WatchPugUtils = {
 
 }

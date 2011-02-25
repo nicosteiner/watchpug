@@ -1,36 +1,36 @@
 <?xml version="1.0"?>
-<?xml-stylesheet href="chrome://amivalid/content/css/amivalid.css" type="text/css"?>
-<!DOCTYPE linktargetfinder SYSTEM "chrome://amivalid/locale/translations.dtd">
-<?xul-overlay href="chrome://amivalid/content/AmIValidOverlay.xul"?>
+<?xml-stylesheet href="chrome://watchpug/content/css/watchpug.css" type="text/css"?>
+<!DOCTYPE linktargetfinder SYSTEM "chrome://watchpug/locale/translations.dtd">
+<?xul-overlay href="chrome://watchpug/content/WatchPugOverlay.xul"?>
 
-<overlay id="amivalid"
+<overlay id="watchpug"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
 	<!-- scripts start -->
-	<script type="application/x-javascript" src="chrome://amivalid/content/AmIValid.js"/>
-	<script type="application/x-javascript" src="chrome://amivalid/content/Utils.js"/>
+	<script type="application/x-javascript" src="chrome://watchpug/content/WatchPug.js"/>
+	<script type="application/x-javascript" src="chrome://watchpug/content/Utils.js"/>
 	<!-- scripts end -->
 	
 	<statusbar id="status-bar">
   
-		<statusbarpanel id="amivalid_Status" context="amivalid_StatusContextMenu" onmousedown="AmIValid.onClickStatusIcon(event)">
-      <image id="amivalid_StatusLogoImage" src="chrome://amivalid/content/logo-16.png" tooltiptext="AmIValid" />
+		<statusbarpanel id="watchpug_Status" context="watchpug_StatusContextMenu" onmousedown="WatchPug.onClickStatusIcon(event)">
+      <image id="watchpug_StatusLogoImage" src="chrome://watchpug/content/logo-16.png" tooltiptext="WatchPug" />
     </statusbarpanel>
     
-    <menupopup id="amivalid_StatusContextMenu" onpopupshowing="">
-      <menuitem label="&menu.home;" oncommand="AmIValid.goHome()"/>
+    <menupopup id="watchpug_StatusContextMenu" onpopupshowing="">
+      <menuitem label="&menu.home;" oncommand="WatchPug.goHome()"/>
       <menuseparator/>
-      <menuitem label="&menu.hide-status-bar;" type="checkbox" oncommand="AmIValid.onToggleOption(this)" option="amivalid.hidestatusbar"/>
+      <menuitem label="&menu.hide-status-bar;" type="checkbox" oncommand="WatchPug.onToggleOption(this)" option="watchpug.hidestatusbar"/>
     </menupopup>
     
 	</statusbar>
   
 	<vbox id="appcontent"> <!-- overlay content window -->
-		<splitter id="amivalid_PanelSplitter" collapsed="true" persist="height" />
-		<vbox id="amivalid_PanelNormal" collapsed="true" persist="height" >
-			<vbox id="amivalid_RequestList" />
-			<splitter id="amivalid_MiddleSplitter" persist="height"/>
-			<vbox id="amivalid_RequestListTable" />
+		<splitter id="watchpug_PanelSplitter" collapsed="true" persist="height" />
+		<vbox id="watchpug_PanelNormal" collapsed="true" persist="height" >
+			<vbox id="watchpug_RequestList" />
+			<splitter id="watchpug_MiddleSplitter" persist="height"/>
+			<vbox id="watchpug_RequestListTable" />
 		</vbox>
 	</vbox>
   

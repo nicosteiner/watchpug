@@ -1,9 +1,9 @@
 <!-- Wordings for XUL Firebug console -->
 
-<!ENTITY pref.title "AmIValid Options">
-<!ENTITY pref.options "AmIValid Options">
+<!ENTITY pref.title "WatchPug Options">
+<!ENTITY pref.options "WatchPug Options">
 
-<!ENTITY menu.home "AmIValid Home">
+<!ENTITY menu.home "WatchPug Home">
 <!ENTITY menu.hide-status-bar "Hide Statusbar Info">
 
 <!ENTITY  overlay.requestlist.toolbox.toolbar.start.button                            "Start">

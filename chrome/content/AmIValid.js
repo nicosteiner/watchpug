@@ -1,5 +1,5 @@
 /*
-AmIValid
+WatchPug
 Copyright (C) 2010 Nico Steiner
 
 Original source code came from:
@@ -22,12 +22,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-// AmIValidController
-function AmIValidController() {
+// WatchPugController
+function WatchPugController() {
 	this.init();
 }
 
-AmIValidController.prototype = {
+WatchPugController.prototype = {
 
 	StringBundleService: null,
 
@@ -36,11 +36,11 @@ AmIValidController.prototype = {
 	// constructor
 	init: function () {
 
-		this.AmIValidService = Components.classes["@decoded.net/amivalid;1"].getService().wrappedJSObject;
+		this.WatchPugService = Components.classes["@decoded.net/watchpug;1"].getService().wrappedJSObject;
 
 		this.StringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
 
-		this.stringBundle = this.StringBundleService.createBundle("chrome://amivalid/locale/AmIValid.properties");
+		this.stringBundle = this.StringBundleService.createBundle("chrome://watchpug/locale/WatchPug.properties");
 
 		if (!this.stringBundle || !this.stringBundle.getSimpleEnumeration().hasMoreElements()) throw "Could not load localized strings!";
 
@@ -48,4 +48,4 @@ AmIValidController.prototype = {
 
 }
 
-var AmIValid = new AmIValidController();
+var WatchPug = new WatchPugController();

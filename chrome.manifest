@@ -1,7 +1,7 @@
-content amivalid chrome/content/
+content watchpug chrome/content/
 
-overlay chrome://browser/content/browser.xul chrome://amivalid/content/browserOverlay.xul
-overlay chrome://navigator/content/navigatorOverlay.xul chrome://amivalid/content/browserOverlay.xul
+overlay chrome://browser/content/browser.xul chrome://watchpug/content/browserOverlay.xul
+overlay chrome://navigator/content/navigatorOverlay.xul chrome://watchpug/content/browserOverlay.xul
 
-locale	amivalid	en-US	locale/en-US/
-locale	amivalid	en-GB	locale/en-US/
+locale	watchpug	en-US	locale/en-US/
+locale	watchpug	en-GB	locale/en-US/
