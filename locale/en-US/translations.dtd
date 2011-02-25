@@ -1,0 +1,25 @@
+<!-- Wordings for XUL Firebug console -->
+
+<!ENTITY pref.title "AmIValid Options">
+<!ENTITY pref.options "AmIValid Options">
+
+<!ENTITY menu.home "AmIValid Home">
+<!ENTITY menu.hide-status-bar "Hide Statusbar Info">
+
+<!ENTITY  overlay.requestlist.toolbox.toolbar.start.button                            "Start">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.start.tooltip                           "Start validating">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.stop.button                             "Stop">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.stop.tooltip                            "Stop validating">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.clear.button                            "Clear">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.clear.tooltip                           "Clear">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.detach.tooltip                          "Detach">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.close.tooltip                           "Close">
+
+<!--
+<!ENTITY menu.home "SenSEO Home">
+<!ENTITY menu.hide-status-bar "Hide Statusbar Info">
+<!ENTITY menu.high-contrast-view "High contrast view">
+
+<!ENTITY pref.do-not-show-status-bar "Do not show SenSEO on status bar">
+<!ENTITY pref.high-contrast-view "High contrast view">
+-->

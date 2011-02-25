@@ -1,0 +1,238 @@
+/*
+	HttpFox - An HTTP analyzer addon for Firefox
+	Copyright (C) 2008 Martin Theimer
+	
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+*/
+
+#hf_Browser {
+	background-color: #FF0000;
+	border-width: 10px;
+}
+
+#hf_Status {
+	cursor: pointer;
+}
+
+.textbox_browser {
+	-moz-appearance: none;
+	margin: 0;
+	border: 1px solid;
+	-moz-border-top-colors: #96969D !important;
+	-moz-border-right-colors: #96969D !important;
+	-moz-border-bottom-colors: #96969D !important;
+	-moz-border-left-colors: #96969D !important;
+	padding: 0;
+}
+
+#hf_PanelSplitter { /*border-top: 1px solid !important;
+    -moz-border-top-colors: threedShadow !important;
+    border-bottom: 1px solid !important;
+    -moz-border-bottom-colors: #EEEEEE !important;*/
+	min-height: 4px;
+	max-height: 4px;
+	/*background-color: #FFFFFF;*/
+}
+
+#hf_MiddleSplitter { /*border-top: 1px solid !important;
+    border-bottom: 1px solid !important;*/
+	border: none;
+	min-height: 4px;
+	max-height: 4px;
+}
+
+#hf_MiddleHeaderSplitter {
+	min-width: 3px;
+	max-width: 3px;
+}
+
+#hf_RawContentOutput,#hf_PostDataRawOutput,#hf_QuickFilterBox {
+	-moz-appearance: none;
+	margin: 0 6px 1px 2px;
+	border: 1px solid;
+	-moz-border-top-colors: #96969D !important;
+	-moz-border-right-colors: #96969D !important;
+	-moz-border-bottom-colors: #96969D !important;
+	-moz-border-left-colors: #96969D !important;
+	padding: 2px 0 1px 3px;
+	background: -moz-field;
+	font: icon;
+	font-size: 11px;
+	
+}
+
+#hf_RawContentOutput [disabled="true"] { /*opacity: 0.5;*/
+	
+}
+
+#hf_RawContentOutput>.textbox-input-box>.textbox-textarea {
+	/*background-color: #FF0000;
+	color: #00FF00;*/
+	
+}
+
+#hf_QuickFilterBox  {
+    -moz-appearance: none;
+    margin: 0 6px 1px 2px;
+    border: 1px solid;
+    -moz-border-top-colors: #96969D !important;
+    -moz-border-right-colors: #96969D !important;
+    -moz-border-bottom-colors: #96969D !important;
+    -moz-border-left-colors: #96969D !important;
+    padding: 2px 0 1px 3px;
+    background: -moz-field;
+    font: icon;
+    font-size: 11px;
+    list-style-image: url(chrome://httpfox/skin/search.png);
+}
+
+#hf_QuickFilterImage {
+	list-style-image: url(chrome://httpfox/skin/search.png);
+}
+
+#hf_Separator {
+    min-height: 13px;
+}
+
+#hf_TopBarButton_Close:hover {
+	-moz-appearance: none;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+	list-style-image: url(chrome://httpfox/skin/close.png);
+	-moz-image-region: rect(0px, 32px, 16px, 16px);
+}
+
+#hf_TopBarButton_Close {
+	-moz-appearance: none;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+	list-style-image: url(chrome://httpfox/skin/close.png);
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+	-moz-box-align: end;
+}
+
+#hf_TopBarButton_Start:hover {
+	list-style-image: url(chrome://httpfox/skin/go.png);
+	-moz-image-region: rect(4px, 45px, 18px, 30px);
+}
+
+#hf_TopBarButton_Start[disabled="true"] {
+	list-style-image: url(chrome://httpfox/skin/go.png);
+	-moz-image-region: rect(4px, 70px, 18px, 55px);
+}
+
+#hf_TopBarButton_Start {
+	list-style-image: url(chrome://httpfox/skin/go.png);
+	-moz-image-region: rect(4px, 20px, 18px, 5px);
+}
+
+#hf_TopBarButton_Detach {
+	list-style-image: url(chrome://httpfox/skin/application_double_grey.png);
+	-moz-appearance: none;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+#hf_TopBarButton_Detach:hover {
+	list-style-image: url(chrome://httpfox/skin/application_double.png);
+	-moz-appearance: none;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+
+#hf_TopBarButton_Stop:hover {
+	list-style-image: url(chrome://httpfox/skin/toolbar.png);
+	-moz-image-region: rect(16px, 48px, 31px, 32px);
+}
+
+#hf_TopBarButton_Stop[disabled="true"] {
+	list-style-image: url(chrome://httpfox/skin/toolbar.png);
+	-moz-image-region: rect(32px, 48px, 47px, 32px);
+}
+
+#hf_TopBarButton_Stop {
+	list-style-image: url(chrome://httpfox/skin/toolbar.png);
+	-moz-image-region: rect(0px, 48px, 15px, 32px);
+}
+
+#hf_TopBarButton_Clear {
+	list-style-image: url(chrome://httpfox/skin/clear.png);
+	/*-moz-image-region: rect(4px, 20px, 18px, 5px);*/
+}
+
+#hf_TopBarButton_HttpFox {
+	list-style-image: url(chrome://httpfox/skin/logo_s.png);
+}
+
+treechildren::-moz-tree-row(hf_currentRow) {
+	border: 1px solid black;
+}
+treechildren::-moz-tree-cell-text(hf_currentRow) {
+}
+
+
+treechildren::-moz-tree-row(hf_fromCache) {
+	background-color: #FFFFEE;
+}
+treechildren::-moz-tree-cell-text(hf_fromCache) {
+}
+
+treechildren::-moz-tree-row(hf_isRedirect) {
+	background-color: #EEEEFF;
+}
+treechildren::-moz-tree-cell-text(hf_isRedirect) {
+}
+
+treechildren::-moz-tree-row(hf_HTTPS) {
+	/*background-color: #FFFFEE;*/
+}
+treechildren::-moz-tree-cell-text(hf_HTTPS) {
+	color: #000088;
+}
+
+treechildren::-moz-tree-row(hf_isError) {
+	background-color: #FFAAAA;
+}
+treechildren::-moz-tree-cell-text(hf_isError) {
+	color: #AA0000;
+}
+
+treechildren::-moz-tree-row(hf_hasError) {
+	background-color: #FFDDDD;
+}
+treechildren::-moz-tree-cell-text(hf_hasError) {
+}
+
+treechildren::-moz-tree-row(hf_OK) {
+	background-color: #EEFFEE;
+}
+treechildren::-moz-tree-cell-text(hf_OK) {
+}
+
+#hf_StatusLogoImage {
+	list-style-image: url(chrome://httpfox/skin/globe16.png);
+}
+
+
+#hf_PanelNormal {
+	-moz-binding: url("chrome://httpfox/content/bindings.xml#startup");
+}
+#hf_Window {
+	-moz-binding: url("chrome://httpfox/content/bindings.xml#windowStartup");
+}
