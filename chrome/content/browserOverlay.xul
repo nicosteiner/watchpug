@@ -13,7 +13,7 @@
 	
 	<statusbar id="status-bar">
   
-		<statusbarpanel id="watchpug_Status" context="watchpug_StatusContextMenu" onmousedown="WatchPug.onClickStatusIcon(event)">
+		<statusbarpanel id="watchpug_Status" context="watchpug_StatusContextMenu" onmousedown="WatchPug.onClickStatusIcon(event);">
       <image id="watchpug_StatusLogoImage" src="chrome://watchpug/content/logo-16.png" tooltiptext="WatchPug" />
     </statusbarpanel>
     
