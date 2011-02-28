@@ -29,8 +29,10 @@
 		<splitter id="watchpug_PanelSplitter" collapsed="true" persist="height" />
 		<vbox id="watchpug_PanelNormal" collapsed="true" persist="height" >
 			<vbox id="watchpug_RequestList" />
+      <!--
 			<splitter id="watchpug_MiddleSplitter" persist="height"/>
 			<vbox id="watchpug_RequestListTable" />
+      -->
 		</vbox>
 	</vbox>
   

@@ -95,12 +95,11 @@ WatchPugController.prototype = {
     
 	},
 
-	//C BUTTON (on all controllers)
 	cmd_hf_stopWatching: function() {
   
-		if (this.HttpFoxService.IsWatching) {
+		if (this.IsWatching) {
     
-			//this.HttpFoxService.stopWatching();
+			//this.stopWatching();
       
 		}
 
@@ -155,11 +154,20 @@ WatchPugController.prototype = {
   
     this.IsWatching = true;
     
+    WatchPugUtils.loadSitemap(this);
+    
+  },
+  
+  loadSitemapCallback: function(sitemapUrlList) {
+  
     this.clearTreeEntries();
     
-    this.addListItem('http://www.abc.de/', '200', '1 Fehler / 3 Warnungen', '1 Fehler');
-    this.addListItem('http://www.abc.de/', '200', '1 Fehler / 3 Warnungen', '1 Fehler');
+    for (var i = 0; i < sitemapUrlList.length; i++) {
     
+      this.addListItem(sitemapUrlList[i], '-', 'n/a', 'n/a');
+    
+    }
+  
   },
   
 	// constructor
