@@ -99,7 +99,7 @@ WatchPugController.prototype = {
   
 		if (this.IsWatching) {
     
-			//this.stopWatching();
+			this.stopWatching();
       
 		}
 
@@ -107,6 +107,12 @@ WatchPugController.prototype = {
     
 	},
 
+  stopWatching: function() {
+  
+    // do nothing yet
+  
+  },
+  
 	disableButton_stopWatching: function() {
   
 		document.getElementById("cmd_wp_stopWatching").setAttribute('disabled', 'true');
@@ -162,12 +168,114 @@ WatchPugController.prototype = {
   
     this.clearTreeEntries();
     
-    for (var i = 0; i < sitemapUrlList.length; i++) {
+    this.checkAllPages(sitemapUrlList);
     
-      this.addListItem(sitemapUrlList[i], '-', 'n/a', 'n/a');
-    
-    }
+    this.cmd_hf_stopWatching();
   
+  },
+  
+  checkAllPages: function(sitemapUrlList) {
+  
+    if (sitemapUrlList.length) {
+  
+      content.document.location.href = sitemapUrlList[0];
+      
+      // check every second if loaded document is ready
+      
+      var intervalId = window.setInterval(function(scope, sitemapUrlList) {
+      
+        return function() {
+
+            if (content.document.readyState == 'complete') {
+        
+              window.clearInterval(intervalId);
+        
+              // document is ready now
+              
+              // extensions check it's status right now
+        
+              scope.checkForErrors(sitemapUrlList);
+        
+            }
+            
+            // check for 'not found'
+          
+        };
+        
+      }(this, sitemapUrlList), 1000);
+      
+    }
+    
+  },
+  
+  checkForErrors: function(sitemapUrlList) {
+  
+    // wait for 1 second to be sure that extension results are ready
+    
+    var timeoutId = window.setTimeout(function(scope, sitemapUrlList) {
+    
+      return function() {
+
+        // check for html validator result
+        
+        var validatorResult = 'n/a';
+        var validatorExtendedResult = 'n/a';
+      
+        if (document.getElementById('tidy-status-bar-img')) {
+        
+          if (document.getElementById('tidy-status-bar-img').src == 'chrome://tidy/skin/good.png') {
+          
+            validatorResult = 'noerror';
+          
+          } else {
+          
+            validatorResult = 'error';
+          
+          }
+          
+        }
+      
+        if (document.getElementById('tidy-browser-error') && document.getElementById('tidy-browser-error') != '') {
+        
+          validatorExtendedResult = document.getElementById('tidy-browser-error').value;
+          
+        }
+      
+        // check for firebug result
+      
+        var firebugResult = 'n/a';
+        var firebugExtendedResult = 'n/a';
+        
+        /*
+        if (document.getElementById('tidy-status-bar-img')) {
+        
+          if (document.getElementById('tidy-status-bar-img').src == 'chrome://tidy/skin/good.png') {
+          
+            validatorResult = 'noerror';
+          
+          } else {
+          
+            validatorResult = 'error';
+          
+          }
+          
+        }
+        */
+        
+        if (document.getElementById('fbStatusText') && document.getElementById('fbStatusText').value != '') {
+        
+          firebugExtendedResult = document.getElementById('fbStatusText').value;
+          
+        }
+        
+        scope.addListItem(sitemapUrlList[0], '200', validatorExtendedResult, firebugExtendedResult);
+  
+        scope.checkAllPages(sitemapUrlList.slice(1));
+          
+      };
+      
+    }(this, sitemapUrlList), 1000);
+    
   },
   
 	// constructor
