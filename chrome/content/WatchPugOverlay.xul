@@ -7,12 +7,9 @@
 		<command id="cmd_wp_startWatching" oncommand="WatchPug.cmd_wp_startWatching();"/>
 		<command id="cmd_wp_stopWatching" oncommand="WatchPug.cmd_wp_stopWatching();" disabled="true"/>
 		<command id="cmd_wp_clear" oncommand="WatchPug.cmd_wp_clear();"/>
-    <!-- implement this later -->
-    <!--
 		<command id="cmd_wp_toggleWatching" oncommand="WatchPug.cmd_wp_toggleWatching();"/>
-		<command id="cmd_wp_detach" oncommand="WatchPug.cmd_wp_detach();"/>
+		<!--<command id="cmd_wp_detach" oncommand="WatchPug.cmd_wp_detach();"/>-->
 		<command id="cmd_wp_close" oncommand="WatchPug.cmd_wp_close();"/>
-    -->
 	</commandset>
 
   <vbox id="watchpug_RequestList" persist="height" flex="1">
@@ -28,16 +25,15 @@
         <toolbarbutton id="watchpug_TopBarButton_Clear" label="&overlay.requestlist.toolbox.toolbar.clear.button;"
           tooltiptext="&overlay.requestlist.toolbox.toolbar.clear.tooltip;" command="cmd_wp_clear"/>
 
-        <!-- implement this later -->
+        <hbox flex="1"></hbox>
+          
         <!--
-        <toolbarseparator id="watchpug_Separator" />
-
         <toolbarbutton id="watchpug_TopBarButton_Detach" 
           tooltiptext="&overlay.requestlist.toolbox.toolbar.detach.tooltip;" command="cmd_wp_detach" align="right"/>
+        -->
           
         <toolbarbutton id="watchpug_TopBarButton_Close" 
           tooltiptext="&overlay.requestlist.toolbox.toolbar.close.tooltip;" command="cmd_wp_close" align="right"/>
-        -->
         
       </toolbar>
     </toolbox>

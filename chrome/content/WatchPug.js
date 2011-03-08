@@ -61,6 +61,17 @@ WatchPugController.prototype = {
 		WatchPugPanel.collapsed = (WatchPugPanel.collapsed) ? false : true;
     
 	},
+  
+  cmd_wp_close: function() {
+
+		var WatchPugPanel = document.getElementById("watchpug_PanelNormal");
+		var WatchPugPanelSplitter = document.getElementById("watchpug_PanelSplitter");
+
+		WatchPugPanelSplitter.collapsed = true;
+    
+		WatchPugPanel.collapsed = true;
+    
+	},
 
 	cmd_wp_toggleWatching: function() {
   
@@ -90,12 +101,12 @@ WatchPugController.prototype = {
 
 	disableButton_startWatching: function() {
   
-		document.getElementById("cmd_wp_startWatching").setAttribute('disabled', 'true');
-		document.getElementById("cmd_wp_stopWatching").removeAttribute('disabled');
+		document.getElementById("watchpug_TopBarButton_Start").setAttribute('disabled', 'true');
+		document.getElementById("watchpug_TopBarButton_Stop").removeAttribute('disabled');
     
 	},
 
-	cmd_hf_stopWatching: function() {
+	cmd_wp_stopWatching: function() {
   
 		if (this.IsWatching) {
     
@@ -109,25 +120,33 @@ WatchPugController.prototype = {
 
   stopWatching: function() {
   
-    // do nothing yet
+    // this automattically stops watching
   
+    this.IsWatching = false;
+    
   },
   
 	disableButton_stopWatching: function() {
   
-		document.getElementById("cmd_wp_stopWatching").setAttribute('disabled', 'true');
-		document.getElementById("cmd_wp_startWatching").removeAttribute('disabled');
+		document.getElementById("watchpug_TopBarButton_Start").removeAttribute('disabled');
+		document.getElementById("watchpug_TopBarButton_Stop").setAttribute('disabled', 'true');
     
 	},
-
-	cmd_hf_clear: function() {
   
-		//this.clearRequests();
+	cmd_wp_clear: function() {
+  
+		this.cmd_wp_stopWatching();
 
-		//this.clear();
+		this.clear();
     
 	},
 
+  clear: function() {
+  
+		this.clearTreeEntries();
+
+	},
+  
 	clearTreeEntries: function() {
   
 		var tree = document.getElementById('watchpug_RequestListBox');
@@ -141,11 +160,13 @@ WatchPugController.prototype = {
     
 	},
 
-  addListItem: function(url, statusCode, htmlValidatorResult, firebugResult) {
+  addListItem: function(url, statusClass, statusCode, htmlValidatorResult, firebugResult) {
   
     var tree = document.getElementById('watchpug_RequestListBox');
     
 		var newListItem = document.createElement('listitem');
+    
+    newListItem.setAttribute('class', 'status_' + statusClass);
     
     newListItem.appendChild(document.createElement('listcell')).setAttribute('label', url);
     newListItem.appendChild(document.createElement('listcell')).setAttribute('label', statusCode);
@@ -170,8 +191,6 @@ WatchPugController.prototype = {
     
     this.checkAllPages(sitemapUrlList);
     
-    this.cmd_hf_stopWatching();
-  
   },
   
   checkAllPages: function(sitemapUrlList) {
@@ -211,70 +230,74 @@ WatchPugController.prototype = {
   checkForErrors: function(sitemapUrlList) {
   
     // wait for 1 second to be sure that extension results are ready
-    
-    var timeoutId = window.setTimeout(function(scope, sitemapUrlList) {
-    
-      return function() {
 
-        // check for html validator result
-        
-        var validatorResult = 'n/a';
-        var validatorExtendedResult = 'n/a';
+    if (this.IsWatching) {
+    
+      var timeoutId = window.setTimeout(function(scope, sitemapUrlList) {
       
-        if (document.getElementById('tidy-status-bar-img')) {
+        return function() {
+
+          // check for html validator result
+          
+          var result = 'warning';
+          
+          var validatorExtendedResult = 'n/a';
         
-          if (document.getElementById('tidy-status-bar-img').src == 'chrome://tidy/skin/good.png') {
+          if (document.getElementById('tidy-status-bar-img')) {
           
-            validatorResult = 'noerror';
+            if (document.getElementById('tidy-status-bar-img').src == 'chrome://tidy/skin/good.png') {
+            
+              result = 'ok';
+            
+            } else {
+            
+              result = 'error';
+            
+            }
+            
+          }
+        
+          if (document.getElementById('tidy-browser-error') && document.getElementById('tidy-browser-error') != '') {
           
-          } else {
+            validatorExtendedResult = document.getElementById('tidy-browser-error').value;
+            
+          }
+        
+          // check for firebug result
+        
+          var firebugExtendedResult = 'n/a';
           
-            validatorResult = 'error';
+          /*
+          if (document.getElementById('tidy-status-bar-img')) {
           
+            if (document.getElementById('tidy-status-bar-img').src == 'chrome://tidy/skin/good.png') {
+            
+              validatorResult = 'ok';
+            
+            } else {
+            
+              validatorResult = 'error';
+            
+            }
+            
+          }
+          */
+          
+          if (document.getElementById('fbStatusText') && document.getElementById('fbStatusText').value != '') {
+          
+            firebugExtendedResult = document.getElementById('fbStatusText').value;
+            
           }
           
-        }
+          scope.addListItem(sitemapUrlList[0], result, '200', validatorExtendedResult, firebugExtendedResult);
+    
+          scope.checkAllPages(sitemapUrlList.slice(1));
+            
+        };
+        
+      }(this, sitemapUrlList), 1000);
       
-        if (document.getElementById('tidy-browser-error') && document.getElementById('tidy-browser-error') != '') {
-        
-          validatorExtendedResult = document.getElementById('tidy-browser-error').value;
-          
-        }
-      
-        // check for firebug result
-      
-        var firebugResult = 'n/a';
-        var firebugExtendedResult = 'n/a';
-        
-        /*
-        if (document.getElementById('tidy-status-bar-img')) {
-        
-          if (document.getElementById('tidy-status-bar-img').src == 'chrome://tidy/skin/good.png') {
-          
-            validatorResult = 'noerror';
-          
-          } else {
-          
-            validatorResult = 'error';
-          
-          }
-          
-        }
-        */
-        
-        if (document.getElementById('fbStatusText') && document.getElementById('fbStatusText').value != '') {
-        
-          firebugExtendedResult = document.getElementById('fbStatusText').value;
-          
-        }
-        
-        scope.addListItem(sitemapUrlList[0], '200', validatorExtendedResult, firebugExtendedResult);
-  
-        scope.checkAllPages(sitemapUrlList.slice(1));
-          
-      };
-      
-    }(this, sitemapUrlList), 1000);
+    }
     
   },
   
