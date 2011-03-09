@@ -16,11 +16,8 @@
 <!ENTITY  overlay.requestlist.toolbox.toolbar.detach.tooltip                          "Detach">
 <!ENTITY  overlay.requestlist.toolbox.toolbar.close.tooltip                           "Close">
 
-<!--
-<!ENTITY menu.home "SenSEO Home">
-<!ENTITY menu.hide-status-bar "Hide Statusbar Info">
-<!ENTITY menu.high-contrast-view "High contrast view">
+<!ENTITY options.HideStatusBarIcon.checkbox "Do not show WatchPug on status bar">
+<!ENTITY options.PugBark.checkbox "Don't play bark sound when start button is pressed">
 
-<!ENTITY pref.do-not-show-status-bar "Do not show SenSEO on status bar">
-<!ENTITY pref.high-contrast-view "High contrast view">
--->
+<!ENTITY menu.home "WatchPug Home">
+<!ENTITY menu.hide-status-bar "Hide Statusbar Icon">

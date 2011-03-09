@@ -6,22 +6,14 @@
 	<prefpane id="watchpug_PrefPane" label="&pref.options;">
   
 		<preferences>
-      <!--
-			<preference id="pref_StartAtBrowserStart" name="extensions.watchpug.StartAtBrowserStart" type="bool"/>
-			<preference id="pref_AlwaysOpenDetached" name="extensions.watchpug.AlwaysOpenDetached" type="bool"/>
-			<preference id="pref_ColorRequests" name="extensions.watchpug.ColorRequests" type="bool"/>
-			<preference id="pref_ForceCaching" name="extensions.watchpug.ForceCaching" type="bool"/>
-      -->
+			<!--<preference id="pref_HideStatusBarIcon" name="extensions.watchpug.HideStatusBarIcon" type="bool"/>-->
+			<preference id="pref_PugBark" name="extensions.watchpug.PugBark" type="bool"/>
 		</preferences>
     
-    <!--
 		<vbox align="left">
-			<checkbox label="&options.startAtBrowserStart.checkbox;" preference="pref_StartAtBrowserStart" id="StartAtBrowserStart" />
-			<checkbox label="&options.alwaysOpenDetached.checkbox;" preference="pref_AlwaysOpenDetached" id="AlwaysOpenDetached" />
-			<checkbox label="&options.colorRequests.checkbox;" preference="pref_ColorRequests" id="ColorRequests" />
-			<checkbox label="&options.forceCaching.checkbox;" preference="pref_ForceCaching" id="ForceCaching" />
+			<!--<checkbox label="&options.HideStatusBarIcon.checkbox;" preference="pref_StartAtBrowserStart" id="HideStatusBarIcon" />-->
+			<checkbox label="&options.PugBark.checkbox;" preference="pref_PugBark" id="PugBark" />
 		</vbox>
-    -->
     
 	</prefpane>
  

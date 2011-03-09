@@ -52,10 +52,4 @@
       </box>	
     </hbox>
   </vbox>
-<!--  
-  <splitter id="watchpug_MiddleSplitter" persist="height"/>
-  
-  <vbox id="watchpug_RequestListTable" persist="height" flex="1">
-  </vbox>
--->
 </overlay>

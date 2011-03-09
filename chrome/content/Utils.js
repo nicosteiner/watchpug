@@ -2,7 +2,7 @@
 WatchPug
 Copyright (C) 2010 Nico Steiner
 
-Original source code came from:
+Original source code comes from:
 
 HttpFox - An HTTP analyzer addon for Firefox
 Copyright (C) 2008 Martin Theimer

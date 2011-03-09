@@ -19,8 +19,10 @@
     
     <menupopup id="watchpug_StatusContextMenu" onpopupshowing="">
       <menuitem label="&menu.home;" oncommand="WatchPug.goHome()"/>
+      <!--
       <menuseparator/>
       <menuitem label="&menu.hide-status-bar;" type="checkbox" oncommand="WatchPug.onToggleOption(this)" option="watchpug.hidestatusbar"/>
+      -->
     </menupopup>
     
 	</statusbar>

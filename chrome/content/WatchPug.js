@@ -2,7 +2,7 @@
 WatchPug
 Copyright (C) 2010 Nico Steiner
 
-Original source code came from:
+Original source code comes from:
 
 HttpFox - An HTTP analyzer addon for Firefox
 Copyright (C) 2008 Martin Theimer
@@ -193,15 +193,21 @@ WatchPugController.prototype = {
   
   letPugBark: function() {
   
-    var ios = Components.classes['@mozilla.org/network/io-service;1'].getService(Components.interfaces.nsIIOService);
-    
-    // from: www.partnersinrhyme.com/soundfx/dog_sounds/chasdogwav.shtml
-    
-    var barkSound = ios.newURI('chrome://watchpug/content/bark.wav', null, null);
+    var dontBarkPref = this.getPref('extensions.watchpug.PugBark');
+  
+    if (!dontBarkPref) {
+  
+      var ios = Components.classes['@mozilla.org/network/io-service;1'].getService(Components.interfaces.nsIIOService);
+      
+      // from: www.partnersinrhyme.com/soundfx/dog_sounds/chasdogwav.shtml
+      
+      var barkSound = ios.newURI('chrome://watchpug/content/bark.wav', null, null);
 
-    if (barkSound) {
-    
-      this.player.play(barkSound);
+      if (barkSound) {
+      
+        this.player.play(barkSound);
+        
+      }
       
     }
   
@@ -263,7 +269,7 @@ WatchPugController.prototype = {
           
         };
         
-      }(this, sitemapUrlList), 1000);
+      }(this, sitemapUrlList), 500);
       
     } else {
     
@@ -313,27 +319,39 @@ WatchPugController.prototype = {
         
           var firebugExtendedResult = 'n/a';
           
-          /*
-          if (document.getElementById('tidy-status-bar-img')) {
+          if (document.getElementById('fbStatusText')) {
           
-            if (document.getElementById('tidy-status-bar-img').src == 'chrome://tidy/skin/good.png') {
+            if (document.getElementById('fbStatusText').value == '') {
             
-              validatorResult = 'ok';
+              if (result != 'error') {
+              
+                result = 'ok';
+                
+              }
             
             } else {
             
-              validatorResult = 'error';
+              result = 'error';
             
             }
             
           }
-          */
           
-          if (document.getElementById('fbStatusText') && document.getElementById('fbStatusText').value != '') {
+          if (document.getElementById('fbStatusText')) {
           
-            firebugExtendedResult = document.getElementById('fbStatusText').value;
+            if (document.getElementById('fbStatusText').value != '') {
+          
+              firebugExtendedResult = document.getElementById('fbStatusText').value;
+              
+            } else {
+
+              firebugExtendedResult = 'no error';
+
+            }
             
           }
+          
+          // ToDo: status code must be implemented correctly
           
           scope.addListItem(content.document.location.href, result, '200', validatorExtendedResult, firebugExtendedResult);
     
@@ -347,12 +365,111 @@ WatchPugController.prototype = {
     
   },
   
+  goHome: function(context) {
+  
+    gBrowser.selectedTab = gBrowser.addTab("http://www.watchpug.com/");
+    
+  },
+
+  toggleStatusBar: function(hide) {
+  
+    //document.getElementById('watchpug_Status').hidden = hide;
+    
+  },
+
+  onToggleOption: function(menuitem) {
+  
+    var option = menuitem.getAttribute('option');
+    var checked = menuitem.getAttribute('checked') == 'true';
+    
+    this.setPref('extensions.' + option, checked);
+    
+    if (option == 'watchpug.hidestatusbar') {
+    
+      document.getElementById('watchpug_Status').hidden = checked;
+      
+    }
+    
+  },
+  
+  getPrefValue: function(name) {
+
+    const PrefService = Components.classes["@mozilla.org/preferences-service;1"];
+    const nsIPrefBranch = Components.interfaces.nsIPrefBranch;
+    const nsIPrefBranch2 = Components.interfaces.nsIPrefBranch2;
+  	const prefs = PrefService.getService(nsIPrefBranch2);
+  	const prefDomain = "extensions.watchpug";
+
+  	var prefName;
+    
+  	if ( name.indexOf("extensions.") !== -1 || name.indexOf("browser.") !== -1) {
+    
+  		prefName = name;
+      
+  	} else {
+    
+  		prefName = prefDomain + "." + name;
+      
+    }
+
+  	var type = prefs.getPrefType(prefName);
+    
+  	if (type == nsIPrefBranch.PREF_STRING) {
+  		return prefs.getCharPref(prefName);
+  	} else if (type == nsIPrefBranch.PREF_INT) {
+  		return prefs.getIntPref(prefName);
+  	} else if (type == nsIPrefBranch.PREF_BOOL) {
+  		return prefs.getBoolPref(prefName);
+  	}
+    
+  },
+
+  getPref: function(name) {
+
+    var val = this.getPrefValue(name);
+    
+    return val;
+      
+  },
+
+  setPref: function(name, value) {
+  
+    var nsIPrefBranch = Components.interfaces.nsIPrefBranch;
+    var nsIPrefBranch2 = Components.interfaces.nsIPrefBranch2;
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(nsIPrefBranch2);
+
+    var prefName;
+    
+    if ( name.indexOf("extensions.") !== -1) {
+    
+        prefName = name;
+        
+    } else {
+    
+        prefName = this.prefDomain + "." + name;
+        
+    }
+
+    if (typeof value == "string") {
+        prefs.setCharPref(prefName, value);
+    } else if (typeof value == "number") {
+        prefs.setIntPref(prefName, value);
+    } else if (typeof value == "boolean") {
+        prefs.setBoolPref(prefName, value);
+    } else {
+        prefs.setCharPref(prefName, value.toString());
+    }
+    
+  },
+  
 	// constructor
 	init: function () {
 
     this.player = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound);
     
     this.player.init();
+    
+    //this.toggleStatusBar(this.getPref('extensions.watchpug.hidestatusbar'));
 
 	}
 
