@@ -36,6 +36,8 @@ WatchPugController.prototype = {
 	StringBundle: null,
   
   IsWatching: false,
+  
+  player: null,
 
 	onClickStatusIcon: function(event) {
   
@@ -181,8 +183,22 @@ WatchPugController.prototype = {
   
     this.IsWatching = true;
     
+    this.letPugBark();
+    
     WatchPugUtils.loadSitemap(this);
     
+  },
+  
+  letPugBark: function() {
+  
+    var ios = Components.classes['@mozilla.org/network/io-service;1'].getService(Components.interfaces.nsIIOService);
+    
+    // from: www.partnersinrhyme.com/soundfx/dog_sounds/chasdogwav.shtml
+    
+    var barkSound = ios.newURI('chrome://watchpug/content/bark.wav', null, null);
+    
+    this.player.play(barkSound);
+  
   },
   
   loadSitemapCallback: function(sitemapUrlList) {
@@ -328,15 +344,9 @@ WatchPugController.prototype = {
 	// constructor
 	init: function () {
 
-    /*
-		this.WatchPugService = Components.classes["@decoded.net/watchpug;1"].getService().wrappedJSObject;
-
-		this.StringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-
-		this.stringBundle = this.StringBundleService.createBundle("chrome://watchpug/locale/WatchPug.properties");
-
-		if (!this.stringBundle || !this.stringBundle.getSimpleEnumeration().hasMoreElements()) throw "Could not load localized strings!";
-    */
+    this.player = Components.classes["@mozilla.org/sound;1"].createInstance(Components.interfaces.nsISound);
+    
+    this.player.init();
 
 	}
 
