@@ -122,3 +122,9 @@
 #watchpug_RequestListBox listitem:hover listcell:last-child {
   border-right: 1px #333 dotted;
 }
+
+#watchpug_RequestListBox listitem[current="true"] listcell {
+  color: #fff;
+  background-color: #0000aa;
+}
+

@@ -197,7 +197,27 @@ WatchPugController.prototype = {
   
     if (sitemapUrlList.length) {
   
-      content.document.location.href = sitemapUrlList[0];
+      var sitemapUrl = sitemapUrlList[0];
+  
+      // check if host is part of location
+      
+      if (document.getElementById('watchpug_HostCheckbox').checked) {
+  
+        // search for start of pagename
+        
+        // search for first slash after http://
+        
+        var startSitemapPage = sitemapUrl.substring(8, sitemapUrl.length).indexOf('/');
+    
+        sitemapUrl = sitemapUrl.substring(8 + startSitemapPage, sitemapUrl.length);
+      
+        content.document.location.pathname = sitemapUrl;
+        
+      } else {
+  
+        content.document.location.href = sitemapUrl;
+        
+      }
       
       // check every second if loaded document is ready
       
@@ -222,6 +242,10 @@ WatchPugController.prototype = {
         };
         
       }(this, sitemapUrlList), 1000);
+      
+    } else {
+    
+      this.cmd_wp_stopWatching();
       
     }
     
@@ -289,7 +313,7 @@ WatchPugController.prototype = {
             
           }
           
-          scope.addListItem(sitemapUrlList[0], result, '200', validatorExtendedResult, firebugExtendedResult);
+          scope.addListItem(content.document.location.href, result, '200', validatorExtendedResult, firebugExtendedResult);
     
           scope.checkAllPages(sitemapUrlList.slice(1));
             

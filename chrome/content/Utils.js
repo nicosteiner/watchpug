@@ -81,22 +81,22 @@ WatchPugUtils = {
           if (WatchPugUtils.req.status == 200) {
               WatchPugUtils.processResult(WatchPugUtils.req.responseText);
           } else {
-              alert("There was a problem retrieving the XML data:\n" +
+              alert("There was a problem retrieving the sitemap.xml data:\n" +
                   WatchPugUtils.req.statusText);
           }
       }
   },
 
   StringtoXML: function(text){
-      if (window.ActiveXObject){
-        var doc=new ActiveXObject('Microsoft.XMLDOM');
-        doc.async='false';
-        doc.loadXML(text);
-      } else {
-        var parser=new DOMParser();
-        var doc=parser.parseFromString(text,'text/xml');
-      }
-      return doc;
+    if (window.ActiveXObject){
+      var doc=new ActiveXObject('Microsoft.XMLDOM');
+      doc.async='false';
+      doc.loadXML(text);
+    } else {
+      var parser=new DOMParser();
+      var doc=parser.parseFromString(text,'text/xml');
+    }
+    return doc;
   },
 
   processResult: function(result) {
@@ -121,14 +121,6 @@ WatchPugUtils = {
         
             var url = sitemapDocNodesChilds[j].childNodes[0].nodeValue.toString();
         
-            // search for start of pagename
-            
-            // search for first slash after http://
-            
-            // var startPageName = url.substring(8, url.length).indexOf('/');
-        
-            // var pageName = url.substring(8 + startPageName, url.length);
-            
             sitemapUrlList.push(url);
         
           }
