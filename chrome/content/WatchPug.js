@@ -196,8 +196,12 @@ WatchPugController.prototype = {
     // from: www.partnersinrhyme.com/soundfx/dog_sounds/chasdogwav.shtml
     
     var barkSound = ios.newURI('chrome://watchpug/content/bark.wav', null, null);
+
+    if (barkSound) {
     
-    this.player.play(barkSound);
+      this.player.play(barkSound);
+      
+    }
   
   },
   

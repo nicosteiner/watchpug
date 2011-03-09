@@ -37,31 +37,56 @@ WatchPugUtils = {
     var url = WatchPugUtils.getSitemapUrl();
   
     WatchPugUtils.req = false;
-      // branch for native XMLHttpRequest object
-      if(window.XMLHttpRequest && !(window.ActiveXObject)) {
-        try {
+    
+    // branch for native XMLHttpRequest object
+    
+    if (window.XMLHttpRequest && !(window.ActiveXObject)) {
+    
+      try {
+      
         WatchPugUtils.req = new XMLHttpRequest();
-          } catch(e) {
+      
+      } catch(e) {
+      
         WatchPugUtils.req = false;
-          }
-      // branch for IE/Windows ActiveX version
-      } else if(window.ActiveXObject) {
-          try {
-            WatchPugUtils.req = new ActiveXObject("Msxml2.XMLHTTP");
-          } catch(e) {
-            try {
-                WatchPugUtils.req = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch(e) {
-                WatchPugUtils.req = false;
-            }
+        
       }
+      
+    // branch for IE/Windows ActiveX version
+    
+    } else if (window.ActiveXObject) {
+    
+      try {
+      
+        WatchPugUtils.req = new ActiveXObject("Msxml2.XMLHTTP");
+        
+      } catch(e) {
+      
+        try {
+        
+            WatchPugUtils.req = new ActiveXObject("Microsoft.XMLHTTP");
+            
+        } catch(e) {
+        
+          WatchPugUtils.req = false;
+          
+        }
+        
       }
-    if(WatchPugUtils.req) {
+      
+    }
+    
+    if (WatchPugUtils.req) {
+    
       WatchPugUtils.req.onreadystatechange = function() {
+      
         WatchPugUtils.processReqChange();
+        
       };
+      
       WatchPugUtils.req.open("GET", url, true);
       WatchPugUtils.req.send("");
+      
     }
     
   },
@@ -75,27 +100,45 @@ WatchPugUtils = {
   },
 
   processReqChange: function() {
-  // only if req shows "loaded"
-      if (WatchPugUtils.req.readyState == 4) {
-          // only if "OK"
-          if (WatchPugUtils.req.status == 200) {
-              WatchPugUtils.processResult(WatchPugUtils.req.responseText);
-          } else {
-              alert("There was a problem retrieving the sitemap.xml data:\n" +
-                  WatchPugUtils.req.statusText);
-          }
+  
+    // only if req shows "loaded"
+    
+    if (WatchPugUtils.req.readyState == 4) {
+    
+      // only if "OK"
+      
+      if (WatchPugUtils.req.status == 200) {
+      
+        WatchPugUtils.processResult(WatchPugUtils.req.responseText);
+        
+      } else {
+      
+        alert("There was a problem retrieving the sitemap.xml data:\n" + WatchPugUtils.req.statusText);
+              
+        WatchPugUtils.callbackScope.cmd_wp_stopWatching();
+          
       }
+      
+    }
+    
   },
 
   StringtoXML: function(text){
+  
     if (window.ActiveXObject){
+    
       var doc=new ActiveXObject('Microsoft.XMLDOM');
+      
       doc.async='false';
       doc.loadXML(text);
+      
     } else {
+    
       var parser=new DOMParser();
       var doc=parser.parseFromString(text,'text/xml');
+      
     }
+    
     return doc;
   },
 
