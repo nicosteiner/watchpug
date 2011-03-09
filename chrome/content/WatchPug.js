@@ -66,6 +66,8 @@ WatchPugController.prototype = {
   
   cmd_wp_close: function() {
 
+    this.cmd_wp_stopWatching();
+  
 		var WatchPugPanel = document.getElementById("watchpug_PanelNormal");
 		var WatchPugPanelSplitter = document.getElementById("watchpug_PanelSplitter");
 
