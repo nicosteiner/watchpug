@@ -41,8 +41,14 @@
             <listheader label="Statuscode"></listheader>
             <listheader label="HTML Validator Result"></listheader>
             <listheader label="Firebug Result"></listheader>
+            <listheader label="JavaScript links"></listheader>
+            <listheader label="Inline styles"></listheader>
+            <listheader label="Inline events"></listheader>
           </listhead>
           <listcols>
+            <listcol flex="1"></listcol>
+            <listcol flex="1"></listcol>
+            <listcol flex="1"></listcol>
             <listcol flex="1"></listcol>
             <listcol flex="1"></listcol>
             <listcol flex="1"></listcol>

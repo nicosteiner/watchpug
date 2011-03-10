@@ -164,7 +164,7 @@ WatchPugController.prototype = {
     
 	},
 
-  addListItem: function(url, statusClass, statusCode, htmlValidatorResult, firebugResult) {
+  addListItem: function(url, statusClass, statusCode, htmlValidatorResult, firebugResult, javaScriptLinks, inlineStyles, inlineEvents) {
   
     var tree = document.getElementById('watchpug_RequestListBox');
     
@@ -176,6 +176,9 @@ WatchPugController.prototype = {
     newListItem.appendChild(document.createElement('listcell')).setAttribute('label', statusCode);
     newListItem.appendChild(document.createElement('listcell')).setAttribute('label', htmlValidatorResult);
     newListItem.appendChild(document.createElement('listcell')).setAttribute('label', firebugResult);
+    newListItem.appendChild(document.createElement('listcell')).setAttribute('label', javaScriptLinks);
+    newListItem.appendChild(document.createElement('listcell')).setAttribute('label', inlineStyles);
+    newListItem.appendChild(document.createElement('listcell')).setAttribute('label', inlineEvents);
     
     tree.appendChild(newListItem);
     
@@ -293,7 +296,7 @@ WatchPugController.prototype = {
           
           var result = 'warning';
           
-          var validatorExtendedResult = 'n/a';
+          var validatorResult = 'n/a';
         
           if (document.getElementById('tidy-status-bar-img')) {
           
@@ -311,13 +314,13 @@ WatchPugController.prototype = {
         
           if (document.getElementById('tidy-browser-error') && document.getElementById('tidy-browser-error') != '') {
           
-            validatorExtendedResult = document.getElementById('tidy-browser-error').value;
+            validatorResult = document.getElementById('tidy-browser-error').value;
             
           }
         
           // check for firebug result
         
-          var firebugExtendedResult = 'n/a';
+          var firebugResult = 'n/a';
           
           if (document.getElementById('fbStatusText')) {
           
@@ -341,19 +344,85 @@ WatchPugController.prototype = {
           
             if (document.getElementById('fbStatusText').value != '') {
           
-              firebugExtendedResult = document.getElementById('fbStatusText').value;
+              firebugResult = document.getElementById('fbStatusText').value;
               
             } else {
 
-              firebugExtendedResult = 'no error';
+              firebugResult = 'no error';
 
+            }
+            
+          }
+          
+          var javaScriptLinks = 'n/a';
+          
+          if (content.document.getElementById('icf-report')) {
+          
+            javaScriptLinks = content.document.getElementById('icf-report').getElementsByClassName('javascript-links')[0].innerHTML;
+            
+            if (javaScriptLinks == '0') {
+            
+              if (result != 'error') {
+              
+                result = 'ok';
+                
+              }
+            
+            } else {
+            
+              result = 'error';
+            
+            }
+            
+          }
+          
+          var inlineStyles = 'n/a';
+          
+          if (content.document.getElementById('icf-report')) {
+          
+            inlineStyles = content.document.getElementById('icf-report').getElementsByClassName('inline-styles')[0].innerHTML;
+            
+            if (inlineStyles == '0') {
+            
+              if (result != 'error') {
+              
+                result = 'ok';
+                
+              }
+            
+            } else {
+            
+              result = 'error';
+            
+            }
+            
+          }
+          
+          var inlineEvents = 'n/a';
+          
+          if (content.document.getElementById('icf-report')) {
+          
+            inlineEvents = content.document.getElementById('icf-report').getElementsByClassName('inline-events')[0].innerHTML;
+            
+            if (inlineEvents == '0') {
+            
+              if (result != 'error') {
+              
+                result = 'ok';
+                
+              }
+            
+            } else {
+            
+              result = 'error';
+            
             }
             
           }
           
           // ToDo: status code must be implemented correctly
           
-          scope.addListItem(content.document.location.href, result, '200', validatorExtendedResult, firebugExtendedResult);
+          scope.addListItem(content.document.location.href, result, '200', validatorResult, firebugResult, javaScriptLinks, inlineStyles, inlineEvents);
     
           scope.checkAllPages(sitemapUrlList.slice(1));
             
