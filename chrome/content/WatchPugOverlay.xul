@@ -26,6 +26,12 @@
 
         <checkbox id="watchpug_HostCheckbox" label="&overlay.requestlist.toolbox.toolbar.host.checkbox;" />
   
+        <separator orient="vertical" />
+        
+        <label value="&overlay.requestlist.toolbox.toolbar.progressmeter;" control="watchpug_ProgressMeter" />
+        
+        <progressmeter id="watchpug_ProgressMeter" mode="determined" value="0" />
+  
         <toolbarspring/>
           
         <toolbarbutton id="watchpug_TopBarButton_Close" 

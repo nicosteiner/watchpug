@@ -15,6 +15,7 @@
 <!ENTITY  overlay.requestlist.toolbox.toolbar.host.checkbox                           "Load pages without host">
 <!ENTITY  overlay.requestlist.toolbox.toolbar.detach.tooltip                          "Detach">
 <!ENTITY  overlay.requestlist.toolbox.toolbar.close.tooltip                           "Close">
+<!ENTITY  overlay.requestlist.toolbox.toolbar.progressmeter                           "Progress">
 
 <!ENTITY options.HideStatusBarIcon.checkbox "Do not show WatchPug on status bar">
 <!ENTITY options.PugBark.checkbox "Don't play bark sound when start button is pressed">

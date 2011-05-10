@@ -38,6 +38,8 @@ WatchPugController.prototype = {
   IsWatching: false,
   
   player: null,
+  
+  maxUrls: 0,
 
 	onClickStatusIcon: function(event) {
   
@@ -147,9 +149,21 @@ WatchPugController.prototype = {
 
   clear: function() {
   
-		this.clearTreeEntries();
+  this.clearProgressMeter();
+
+  this.clearTreeEntries();
 
 	},
+  
+  clearProgressMeter: function() {
+  
+    if (document.getElementById('watchpug_ProgressMeter')) {
+    
+      document.getElementById('watchpug_ProgressMeter').value = 0;
+
+    }
+    
+  },
   
 	clearTreeEntries: function() {
   
@@ -220,11 +234,23 @@ WatchPugController.prototype = {
   
     this.clearTreeEntries();
     
+    this.maxUrls = sitemapUrlList.length;
+    
     this.checkAllPages(sitemapUrlList);
     
   },
   
   checkAllPages: function(sitemapUrlList) {
+  
+    // update progressmeter
+    
+    if (this.maxUrls > 0 && document.getElementById('watchpug_ProgressMeter')) {
+    
+      var progress = 100 - ( 100 * sitemapUrlList.length / this.maxUrls );
+
+      document.getElementById('watchpug_ProgressMeter').value = progress;
+    
+    }
   
     if (sitemapUrlList.length) {
   
