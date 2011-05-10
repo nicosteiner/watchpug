@@ -40,6 +40,8 @@ WatchPugController.prototype = {
   player: null,
   
   maxUrls: 0,
+  
+  errors: 0,
 
 	onClickStatusIcon: function(event) {
   
@@ -152,14 +154,18 @@ WatchPugController.prototype = {
   this.clearProgressMeter();
 
   this.clearTreeEntries();
+  
+  this.errors = 0;
 
 	},
   
   clearProgressMeter: function() {
   
-    if (document.getElementById('watchpug_ProgressMeter')) {
+    if (document.getElementById('watchpug_ProgressMeter') && document.getElementById('watchpug_CheckErrors')) {
     
       document.getElementById('watchpug_ProgressMeter').value = 0;
+
+      document.getElementById('watchpug_CheckErrors').value = '0 errors on 0 pages';
 
     }
     
@@ -236,6 +242,8 @@ WatchPugController.prototype = {
     
     this.maxUrls = sitemapUrlList.length;
     
+    this.errors = 0;
+    
     this.checkAllPages(sitemapUrlList);
     
   },
@@ -244,11 +252,13 @@ WatchPugController.prototype = {
   
     // update progressmeter
     
-    if (this.maxUrls > 0 && document.getElementById('watchpug_ProgressMeter')) {
+    if (this.maxUrls > 0 && document.getElementById('watchpug_ProgressMeter') && document.getElementById('watchpug_CheckErrors')) {
     
       var progress = 100 - ( 100 * sitemapUrlList.length / this.maxUrls );
 
       document.getElementById('watchpug_ProgressMeter').value = progress;
+      
+      document.getElementById('watchpug_CheckErrors').value = this.errors + ' errors on ' + ( this.maxUrls - sitemapUrlList.length ) + '/' + this.maxUrls + ' pages';
     
     }
   
@@ -447,6 +457,12 @@ WatchPugController.prototype = {
           }
           
           // ToDo: status code must be implemented correctly
+          
+          if (result == 'error') {
+          
+            scope.errors++;
+          
+          }
           
           scope.addListItem(content.document.location.href, result, '200', validatorResult, firebugResult, javaScriptLinks, inlineStyles, inlineEvents);
     

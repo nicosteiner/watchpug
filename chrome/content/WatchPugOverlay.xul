@@ -28,10 +28,10 @@
   
         <separator orient="vertical" />
         
-        <label value="&overlay.requestlist.toolbox.toolbar.progressmeter;" control="watchpug_ProgressMeter" />
-        
         <progressmeter id="watchpug_ProgressMeter" mode="determined" value="0" />
   
+        <label id="watchpug_CheckErrors" value="&overlay.requestlist.toolbox.toolbar.checkerrors;" />
+        
         <toolbarspring/>
           
         <toolbarbutton id="watchpug_TopBarButton_Close" 
