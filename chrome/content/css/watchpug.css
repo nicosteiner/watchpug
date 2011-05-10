@@ -4,7 +4,7 @@ Copyright (C) 2010 Nico Steiner
 
 Original source code comes from:
 
-HttpFox - An HTTP analyzer addon for Firefox
+watchpug - An HTTP analyzer addon for Firefox
 Copyright (C) 2008 Martin Theimer
 
 This program is free software; you can redistribute it and/or modify
@@ -31,7 +31,7 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
     padding: 0 !important;
     border: none !important;
     background: transparent !important;
-	list-style-image: url(chrome://httpfox/skin/close.png);
+	list-style-image: url(chrome://watchpug/content/img/close.png);
 	-moz-image-region: rect(0px, 32px, 16px, 16px);
 }
 
@@ -40,28 +40,28 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
     padding: 0 !important;
     border: none !important;
     background: transparent !important;
-	list-style-image: url(chrome://httpfox/skin/close.png);
+	list-style-image: url(chrome://watchpug/content/img/close.png);
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 	-moz-box-align: end;
 }
 
 #watchpug_TopBarButton_Start:hover {
-	list-style-image: url(chrome://httpfox/skin/go.png);
+	list-style-image: url(chrome://watchpug/content/img/go.png);
 	-moz-image-region: rect(4px, 45px, 18px, 30px);
 }
 
 #watchpug_TopBarButton_Start[disabled="true"] {
-	list-style-image: url(chrome://httpfox/skin/go.png);
+	list-style-image: url(chrome://watchpug/content/img/go.png);
 	-moz-image-region: rect(4px, 70px, 18px, 55px);
 }
 
 #watchpug_TopBarButton_Start {
-	list-style-image: url(chrome://httpfox/skin/go.png);
+	list-style-image: url(chrome://watchpug/content/img/go.png);
 	-moz-image-region: rect(4px, 20px, 18px, 5px);
 }
 
 #watchpug_TopBarButton_Detach {
-	list-style-image: url(chrome://httpfox/skin/application_double_grey.png);
+	list-style-image: url(chrome://watchpug/content/img/application_double_grey.png);
 	-moz-appearance: none;
     padding: 0 !important;
     border: none !important;
@@ -69,7 +69,7 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 }
 
 #watchpug_TopBarButton_Detach:hover {
-	list-style-image: url(chrome://httpfox/skin/application_double.png);
+	list-style-image: url(chrome://watchpug/content/img/application_double.png);
 	-moz-appearance: none;
     padding: 0 !important;
     border: none !important;
@@ -77,22 +77,22 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 }
 
 #watchpug_TopBarButton_Stop:hover {
-	list-style-image: url(chrome://httpfox/skin/toolbar.png);
+	list-style-image: url(chrome://watchpug/content/img/toolbar.png);
 	-moz-image-region: rect(16px, 48px, 31px, 32px);
 }
 
 #watchpug_TopBarButton_Stop[disabled="true"] {
-	list-style-image: url(chrome://httpfox/skin/toolbar.png);
+	list-style-image: url(chrome://watchpug/content/img/toolbar.png);
 	-moz-image-region: rect(32px, 48px, 47px, 32px);
 }
 
 #watchpug_TopBarButton_Stop {
-	list-style-image: url(chrome://httpfox/skin/toolbar.png);
+	list-style-image: url(chrome://watchpug/content/img/toolbar.png);
 	-moz-image-region: rect(0px, 48px, 15px, 32px);
 }
 
 #watchpug_TopBarButton_Clear {
-	list-style-image: url(chrome://httpfox/skin/clear.png);
+	list-style-image: url(chrome://watchpug/content/img/clear.png);
 }
 
 #watchpug_RequestListBox listitem.status_ok {
