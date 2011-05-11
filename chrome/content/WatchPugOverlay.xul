@@ -7,6 +7,7 @@
 		<command id="cmd_wp_startWatching" oncommand="WatchPug.cmd_wp_startWatching();"/>
 		<command id="cmd_wp_stopWatching" oncommand="WatchPug.cmd_wp_stopWatching();" disabled="true"/>
 		<command id="cmd_wp_clear" oncommand="WatchPug.cmd_wp_clear();"/>
+		<command id="cmd_wp_filter" oncommand="WatchPug.cmd_wp_filter();"/>
 		<command id="cmd_wp_toggleWatching" oncommand="WatchPug.cmd_wp_toggleWatching();"/>
 		<command id="cmd_wp_close" oncommand="WatchPug.cmd_wp_close();"/>
 	</commandset>
@@ -23,6 +24,9 @@
             
         <toolbarbutton id="watchpug_TopBarButton_Clear" label="&overlay.requestlist.toolbox.toolbar.clear.button;"
           tooltiptext="&overlay.requestlist.toolbox.toolbar.clear.tooltip;" command="cmd_wp_clear"/>
+
+        <toolbarbutton id="watchpug_TopBarButton_Filter" label="&overlay.requestlist.toolbox.toolbar.filter.button;"
+          tooltiptext="&overlay.requestlist.toolbox.toolbar.filter.tooltip;" command="cmd_wp_filter"/>
 
         <checkbox id="watchpug_HostCheckbox" label="&overlay.requestlist.toolbox.toolbar.host.checkbox;" />
   

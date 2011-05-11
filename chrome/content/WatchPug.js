@@ -42,7 +42,7 @@ WatchPugController.prototype = {
   maxUrls: 0,
   
   errors: 0,
-
+  
 	onClickStatusIcon: function(event) {
   
 		if (event.button != 0) {
@@ -149,6 +149,38 @@ WatchPugController.prototype = {
     
 	},
 
+	cmd_wp_filter: function() {
+  
+    var requestListBox = document.getElementById('watchpug_RequestListBox');
+    
+    var allListItems = requestListBox.childNodes;
+    
+    var listItemsToBeRemoved = [];
+    
+    // first collect all list items to be removed
+    
+    for (var i = 0; i < allListItems.length; i++) {
+    
+      var listItemClassName = allListItems[i].className;
+    
+      if (listItemClassName && listItemClassName !== 'status_error') {
+      
+        listItemsToBeRemoved.push(allListItems[i]);
+      
+      }
+    
+    }
+  
+    // second remove these list items
+    
+    for (var i = 0; i < listItemsToBeRemoved.length; i++) {
+    
+      requestListBox.removeChild(listItemsToBeRemoved[i]);
+      
+    }
+      
+  },
+
   clear: function() {
   
   this.clearProgressMeter();
@@ -200,7 +232,13 @@ WatchPugController.prototype = {
     newListItem.appendChild(document.createElement('listcell')).setAttribute('label', inlineStyles);
     newListItem.appendChild(document.createElement('listcell')).setAttribute('label', inlineEvents);
     
-    tree.appendChild(newListItem);
+    var referenceListItem = tree.appendChild(newListItem);
+    
+    referenceListItem.addEventListener('click', function() {
+    
+      // have to think about what to do here
+    
+    }, false); 
     
   },
   

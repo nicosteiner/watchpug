@@ -107,6 +107,10 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 	background-color: #FFEEEE;
 }
 
+#watchpug_RequestListBox listitem.hidden {
+	display: none;
+}
+
 #watchpug_RequestListBox listitem listcell:first-child {
   border-left: 1px #fff solid;
 }
