@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>watchpug@nicosteiner.de</em:id>
-    <em:version>0.3.0</em:version>
+    <em:version>0.3.1</em:version>
     <em:type>2</em:type>
    
     <!-- Target Application this extension can install into, 
